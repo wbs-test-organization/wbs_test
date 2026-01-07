@@ -8,6 +8,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Member> Members { get; set; }
     public DbSet<Project> Projects {get; set; }
+    public DbSet<ProjectStatus> ProjectStatus {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

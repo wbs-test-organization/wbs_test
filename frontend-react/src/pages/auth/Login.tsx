@@ -8,7 +8,6 @@ import { Button, Form, Input, Card, message } from 'antd';
 const Login: React.FC = () => {
     const navigate = useNavigate();
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [error, setError] = useState<string | null>(null);
 
     const [formData, setFormData] = useState<LoginRequest>({
         loginName: "",
@@ -27,7 +26,6 @@ const Login: React.FC = () => {
     };
 
     const handleSubmit = async () => {
-        setError(null)
         try {
             const result = await AuthService.login(formData);
 
@@ -40,7 +38,7 @@ const Login: React.FC = () => {
                 message.error("Username or password not match");
             }
         } catch (error) {
-            setError("Unable to connect to server. Please check your network and try again.");
+            console.log("Error when login", error);
         }
     };
 
@@ -56,11 +54,6 @@ const Login: React.FC = () => {
                 <h2 className="text-3xl font-extrabold text-center text-gray-700 mb-6">
                     Login WBBBSS System
                 </h2>
-                {error && (
-                    <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">
-                        {error}
-                    </div>
-                )}
                 <Form className="space-y-4" onFinish={handleSubmit}>
                     <div className="space-y-1">
                         <Form.Item className="text-sm font-medium text-gray-700 flex items-center mb-[-5px]">

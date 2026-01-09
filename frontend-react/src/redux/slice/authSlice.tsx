@@ -4,7 +4,7 @@ export interface UserInfo {
   memberId: string;
   memberFullName: string;
   email: string;
-  loginName: string;
+  loginName?: string;
   phoneNumber?: string;
   roleId: string;
   isActive: boolean;

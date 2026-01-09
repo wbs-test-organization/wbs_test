@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { AuthService } from '../../service/authService'; // Import service của bạn
+import { AuthService } from '../../service/authService'; 
 
 const VerifyEmailPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -34,6 +34,7 @@ const VerifyEmailPage: React.FC = () => {
           setMessage(result.error || 'Xác thực thất bại. Vui lòng thử lại.');
         }
       } catch (error) {
+        console.log("Error when verigy email", error);
         setStatus('error');
         setMessage('Có lỗi xảy ra trong quá trình xác thực.');
       }

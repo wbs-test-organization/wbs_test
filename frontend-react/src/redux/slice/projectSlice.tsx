@@ -18,7 +18,7 @@ interface Project {
     projectStatusName?: string; 
 }
 
-interface ProjectState {
+export interface ProjectState {
     projects: Project[];
     selectedProject: Project | null;
     isLoading : boolean;

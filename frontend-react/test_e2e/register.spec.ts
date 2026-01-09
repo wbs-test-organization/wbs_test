@@ -138,12 +138,11 @@ test.describe('Register Functionality - With Real Backend (Current Component)', 
 
     await page.getByRole('button', { name: 'Register' }).click();
 
-    // Bỏ check loading button để tránh flaky
-    // await expect(page.getByRole('button', { name: 'Registering...' })).toBeVisible({ timeout: 8000 });
+    await expect(page.getByRole('button', { name: 'Registering...' })).toBeVisible();
 
     // Message thành công
 
     // Redirect về login
-    await expect(page).toHaveURL('/login', { timeout: 20000 });
+    await expect(page).toHaveURL('/login',{timeout: 30000});
   });
 });

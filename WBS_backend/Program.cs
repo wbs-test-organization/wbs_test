@@ -96,6 +96,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IProjectStatusService, ProjectStatusService>();
 // builder.Services.AddScoped<IMemberService, MemberService>();
 
 // =========================
@@ -120,15 +121,16 @@ var app = builder.Build();
 // =========================
 // Middleware Pipeline
 // =========================
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectManage API v1");
-    });
-}
-
+    // if (app.Environment.IsDevelopment())
+    // {
+    //     app.UseSwagger();
+    //     app.UseSwaggerUI(c =>
+    //     {
+    //         c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectManage API v1");
+    //     });
+    // }
+app.UseSwagger();
+app.UseSwaggerUI();
 // app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 app.UseAuthentication();

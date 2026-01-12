@@ -51,5 +51,19 @@ public class AppDbContext : DbContext
            entity.Property(p => p.MemberAuthorId).HasColumnName("member_author_id");
            entity.Property(p => p.ProjectStatusId).HasColumnName("project_status_id");
         });
+
+        modelBuilder.Entity<ProjectStatus>(entity =>
+        {
+            entity.ToTable("tbl_project_status");
+            entity.HasKey(ps => ps.ProjectStatusId);
+            entity.Property(ps => ps.ProjectStatusId).HasColumnName("project_status_id").ValueGeneratedOnAdd();
+            entity.Property(ps => ps.StatusName).HasColumnName("status_name");
+            entity.Property(ps => ps.StatusDescription).HasColumnName("status_description");
+            entity.Property(ps => ps.StatusColor).HasColumnName("status_color");
+            entity.Property(ps => ps.SortOrder).HasColumnName("sort_order");
+            entity.Property(ps => ps.IsActive)
+                .HasColumnName("is_active")
+                .HasDefaultValue(true);
+        });
     } 
 }

@@ -3,10 +3,12 @@ import { Search, Filter, Plus, X } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store/Store';
 import { ProjectService } from "../service/projectService";
+import { ProjectStatusService } from '../service/projectStatusService';
 import { message } from 'antd';
 
 const Home: React.FC = () => {
     const { projects, isLoading } = useSelector((state: RootState) => state.project);
+    const { projectStatuses } = useSelector((state: RootState) => state.projectStatus);
     const [currentEditId, setCurrentEditId] = useState<number | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -28,18 +30,21 @@ const Home: React.FC = () => {
     })
     useEffect(() => {
         ProjectService.getAllProjects();
+        ProjectStatusService.getAllProjectStatuses();
     }, []);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData(prev => ({ 
+            ...prev, 
+            [name]: name === "projectStatusId" ? (value ? Number(value) : prev.projectStatusId) : value 
+        }));
     };
-
     const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormEditData(prev => ({
             ...prev,
-            [name]: name === "projectStatusId" ? Number(value) : value
+            [name]: name === "projectStatusId" ? (value ? Number(value) : prev.projectStatusId) : value
         }));
     };
 
@@ -48,10 +53,10 @@ const Home: React.FC = () => {
             const createData = {
                 projectCode: formData.projectCode,
                 projectName: formData.projectName,
-                projectStatusId: formData.projectStatusId,
+                projectStatusId: Number(formData.projectStatusId),
                 expectedStartDate: formData.expectedStartDate,
                 expectedEndDate: formData.expectedEndDate,
-                memberAuthorId: formData.memberAuthorId
+                memberAuthorId: Number(formData.memberAuthorId)
             };
             const result = await ProjectService.createProject(createData);
 
@@ -246,7 +251,7 @@ const Home: React.FC = () => {
 
                                             <td className="px-6 py-4">
                                                 <div className="text-sm text-gray-600 dark:text-gray-300">
-                                                    {project.projectStatusId || 'N/A'}
+                                                    {project.projectStatusName || '-'}
                                                 </div>
                                             </td>
 
@@ -356,11 +361,12 @@ const Home: React.FC = () => {
                                         onChange={handleInputChange}
                                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
                                     >
-                                        <option value="1">Open</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
-                                        <option value="4">Closed</option>
-                                        <option value="5">Cancelled</option>
+                                        <option value={0}>Chọn trạng thái</option>
+                                        {projectStatuses.map(status => (
+                                            <option key={status.projectStatusId} value={status.projectStatusId}>
+                                                {status.statusName}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
 
@@ -483,11 +489,12 @@ const Home: React.FC = () => {
                                         onChange={handleEditChange}
                                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
                                     >
-                                        <option value="1">Open</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
-                                        <option value="4">Closed</option>
-                                        <option value="5">Cancelled</option>
+                                        <option value="0">Chọn trạng thái</option>
+                                        {projectStatuses.map(status => (
+                                            <option key={status.projectStatusId} value={status.projectStatusId}>
+                                                {status.statusName}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
 

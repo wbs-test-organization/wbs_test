@@ -437,9 +437,9 @@ const Home: React.FC = () => {
             )}
             {isEditModalOpen && currentEditId && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
+                    <button className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
                         onClick={() => setIsEditModalOpen(false)}>
-                    </div>
+                    </button>
                     <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 animate-in fade-in zoom-in duration-200">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">

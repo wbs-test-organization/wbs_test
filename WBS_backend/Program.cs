@@ -7,18 +7,38 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
 using WBS_backend.Data;
 using WBS_backend.Services;
-using System.Text;
-using System;
+using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // =========================
+// Load Environment Variables from .env files
+// =========================
+// Khi chạy local (dotnet run), load từ .env.local
+// Khi build Docker, sử dụng production.env (được copy vào container)
+var envFile = builder.Environment.IsDevelopment() ? ".env.local" : "production.env";
+if (File.Exists(envFile))
+{
+    DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { envFile }));
+    Console.WriteLine($"Loaded environment variables from: {envFile}");
+}
+else
+{
+    Console.WriteLine($"Environment file not found: {envFile}, using system environment variables");
+}
+
+// =========================
 // Database Configuration
 // =========================
+// Ưu tiên lấy connection string từ environment variable, fallback về appsettings.json
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+    ?? builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+        connectionString,
+        ServerVersion.AutoDetect(connectionString)
     ));
 
 // =========================

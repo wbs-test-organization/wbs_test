@@ -76,3 +76,4 @@ TestResults/
 #env
 *.env
 production.env
+.env.local

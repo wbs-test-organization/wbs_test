@@ -41,14 +41,14 @@ const Home: React.FC = () => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: name === "projectStatusId" ? (value ? Number(value) : prev.projectStatusId) : value
+            [name]: value
         }));
     };
     const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormEditData(prev => ({
             ...prev,
-            [name]: name === "projectStatusId" ? (value ? Number(value) : prev.projectStatusId) : value
+            [name]: value
         }));
     };
 
@@ -124,7 +124,7 @@ const Home: React.FC = () => {
     }
 
     const handleDeleteProject = async (projectId: number) => {
-        const confirmed = window.confirm("Are you sure you want to delete this project?");
+        const confirmed = globalThis.confirm("Are you sure you want to delete this project?");
         if (!confirmed) return;
         try {
             const result = await ProjectService.deleteProject(projectId);
@@ -342,7 +342,7 @@ const Home: React.FC = () => {
                                 </label>
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
-                                    Project Name
+                                    Project Name{' '}
                                     <input
                                         type="text"
                                         name="projectName"
@@ -356,7 +356,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
-                                    Status
+                                    Status{' '}
                                     <select
                                         name="projectStatusId"
                                         value={formData.projectStatusId}
@@ -374,7 +374,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
-                                    Expected Start Date
+                                    Expected Start Date{' '}
                                     <input
                                         type="date"
                                         name="expectedStartDate"
@@ -386,7 +386,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
-                                    Expected End Date
+                                    Expected End Date{' '}
                                     <input
                                         type="date"
                                         name="expectedEndDate"
@@ -398,7 +398,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
-                                    Project Leader
+                                    Project Leader{' '}
                                     <select
                                         name="projectLeadId"
                                         value={formData.projectLeadId}
@@ -471,7 +471,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Project Name
+                                    Project Name{' '}
                                     <input
                                         type="text"
                                         name="projectName"
@@ -484,7 +484,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Status
+                                    Status{' '}
                                     <select
                                         name="projectStatusId"
                                         value={formEditData.projectStatusId}
@@ -513,7 +513,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Expected End Date
+                                    Expected End Date{' '}
                                     <input
                                         type="date"
                                         name="expectedEndDate"
@@ -525,7 +525,7 @@ const Home: React.FC = () => {
 
 
                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Project Leader
+                                    Project Leader{' '}
                                     <select
                                         name="projectLeadId"
                                         value={formEditData.projectLeadId}

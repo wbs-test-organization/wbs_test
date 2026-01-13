@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WBS_backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     // [Authorize]
     public class MemberController : ControllerBase
     {

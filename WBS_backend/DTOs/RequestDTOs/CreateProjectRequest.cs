@@ -9,7 +9,6 @@ namespace WBS_backend.DTOs.RequestDTOs
         public int ProjectStatusId {get; set;}
         public DateTime? ExpectedStartDate {get; set;}
         public DateTime? ExpectedEndDate {get; set;}
-        public int MemberAuthorId {get; set;}
         public int ProjectLeadId {get; set;}
     }
 }

@@ -17,6 +17,8 @@ export interface ProjectResponse {
     authorFullName?: string;
     projectStatusId?: number;
     projectStatusName?: string; 
+    projectLeadId?: number;
+    projectLeadName?: string;
 }
 
 export interface CreateProjectRequest{
@@ -25,7 +27,7 @@ export interface CreateProjectRequest{
     projectStatusId: number;
     expectedStartDate?: string;
     expectedEndDate?: string;
-    memberAuthorId: number;
+    projectLeadId: number;
 }
 
 export interface UpdateProjectRequest{
@@ -39,6 +41,7 @@ export interface UpdateProjectRequest{
     workProgress?: number;
     estimateTime?: number;
     spentTime?: number;
+    projectLeadId?: number;
 }
 
 export const getAllProjectAPI = async () => {

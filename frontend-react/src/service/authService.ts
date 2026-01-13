@@ -3,8 +3,8 @@ import Store from "../store/Store";
 import { 
   loginAPI, 
   registerAPI, 
-  forgotPasswordAPI,   // ← Thêm import
-  resetPasswordAPI,    // ← Thêm import
+  forgotPasswordAPI,   
+  resetPasswordAPI,    
   type LoginRequest, 
   type RegisterRequest 
 } from "../api/authAPI";

@@ -54,7 +54,6 @@ namespace WBS_backend.Services
                 ProjectStatusId = createProjectRequest.ProjectStatusId,
                 ExpectedStartDate = createProjectRequest.ExpectedStartDate,
                 ExpectedEndDate = createProjectRequest.ExpectedEndDate,
-                MemberAuthorId = createProjectRequest.MemberAuthorId,
                 ProjectLeadId = createProjectRequest.ProjectLeadId
             };
             _context.Projects.Add(project);

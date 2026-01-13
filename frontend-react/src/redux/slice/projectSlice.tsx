@@ -16,6 +16,8 @@ interface Project {
     authorFullName?: string;
     projectStatusId?: number;
     projectStatusName?: string; 
+    projectLeadId?: number;
+    projectLeadName?: string;
 }
 
 export interface ProjectState {

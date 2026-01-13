@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../redux/slice/authSlice"
 import projectReducer from "../redux/slice/projectSlice"
 import projectStatusReducer from "../redux/slice/projectStatusSlice"
+import memberReducer from "../redux/slice/memberSlice";
 
 const reducer = {
   auth: authReducer,
   project: projectReducer,
   projectStatus: projectStatusReducer,
+  member: memberReducer,
 };
 
 const Store =

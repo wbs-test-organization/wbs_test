@@ -30,7 +30,7 @@ const HeaderProject: React.FC = () => {
               className="h-12 w-12 object-contain rounded-lg shadow-sm"
             />
 
-            <div
+            <button
               onClick={() => setSelectedItem('project')}
               className={`flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:bg-green-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2
                 ${selectedItem === 'project' ? 'bg-green-500 text-white' : ''}`}
@@ -46,9 +46,9 @@ const HeaderProject: React.FC = () => {
               <h1 className="text-sm text-black dark:text-gray-200 group-hover:text-green-400 transition-colors">
                 PROJECT
               </h1>
-            </div>
+            </button>
 
-            <div
+            <button
               onClick={() => setSelectedItem('tasklist')}
               className={`flex items-center space-x-3 group cursor-pointer transition-all duration-300 hover:bg-green-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 
                 ${selectedItem === 'tasklist' ? 'bg-green-500 text-white' : ''}`}
@@ -62,9 +62,9 @@ const HeaderProject: React.FC = () => {
               <h1 className="text-sm text-black dark:text-gray-200 group-hover:text-green-400 transition-colors">
                 TASKLIST
               </h1>
-            </div>
+            </button>
 
-            <div
+            <button
               onClick={() => setSelectedItem('logtime')}
               className={`flex items-center space-x-3 group cursor-pointer transition-all duration-300 hover:bg-green-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 
                 ${selectedItem === 'logtime' ? 'bg-green-500 text-white' : ''}`}
@@ -80,9 +80,9 @@ const HeaderProject: React.FC = () => {
               <h1 className="text-sm text-black dark:text-gray-200 group-hover:text-green-400 transition-colors">
                 LOGTIME
               </h1>
-            </div>
+            </button>
 
-            <div
+            <button
               onClick={() => setSelectedItem('dashboard')}
               className={`flex items-center space-x-3 group cursor-pointer transition-all duration-300 hover:bg-green-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 
                 ${selectedItem === 'dashboard' ? 'bg-green-500 text-white' : ''}`}
@@ -98,9 +98,9 @@ const HeaderProject: React.FC = () => {
               <h1 className="text-sm text-black dark:text-gray-200 group-hover:text-green-400 transition-colors">
                 DASHBOARD
               </h1>
-            </div>
+            </button>
 
-            <div
+            <button
               onClick={() => setSelectedItem('checklist')}
               className={`flex items-center space-x-3 group cursor-pointer transition-all duration-300 hover:bg-green-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 
                 ${selectedItem === 'checklist' ? 'bg-green-500 text-white' : ''}`}
@@ -116,7 +116,7 @@ const HeaderProject: React.FC = () => {
               <h1 className="text-sm text-black dark:text-gray-200 group-hover:text-green-400 transition-colors">
                 CHECKLIST
               </h1>
-            </div>
+            </button>
           </div>
 
           <div className="flex items-center space-x-6">

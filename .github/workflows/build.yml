@@ -1,19 +1,26 @@
-name: Build
+name: SonarQube - Frontend (JS/TS)
+
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarqube:
-    name: SonarQube
-    runs-on: windows-latest
+    name: SonarQube Frontend
+    runs-on: ubuntu-latest  # Dùng ubuntu nhanh hơn cho JS
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarQube Scan
+          fetch-depth: 0
+
+      - name: SonarQube Scan Frontend
         uses: SonarSource/sonarqube-scan-action@v6
+        with:
+          args: >
+            -Dsonar.organization=vnhan111-1
+            -Dsonar.projectKey=vnhan111_wbs_test  # ← projectKey frontend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

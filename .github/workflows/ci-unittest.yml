@@ -1,0 +1,55 @@
+name: CI - Unit Tests (Vitest Tests + Coverage)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Quan trọng cho blame/PR decoration nếu dùng Sonar
+
+      # 2. Setup Node.js (chọn version bạn dùng, ví dụ 20)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'  # hoặc 'pnpm', 'yarn' tùy package manager của bạn
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci  # hoặc pnpm install --frozen-lockfile, yarn install --immutable
+
+      # 4. Run Vitest tests + generate coverage (LCOV format cho SonarCloud)
+      - name: Run tests and generate coverage
+        run: npm run test -- --coverage --reporter=lcov  # hoặc vitest run --coverage
+
+      # 5. SonarCloud Scan (tùy chọn - nếu bạn đang dùng SonarCloud để theo dõi coverage)
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v4  # Phiên bản mới nhất
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Tạo secret này trong repo Settings > Secrets and variables > Actions
+        with:
+          args: >
+            -Dsonar.organization=vnhan111-1
+            -Dsonar.projectKey=vnhan111_wbs_test
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info  
+
+      # 6. (Tùy chọn) Báo cáo coverage đẹp vào PR comment
+      - name: Report Coverage to PR
+        if: always()  # Chạy cả khi test fail
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-path: ./coverage/coverage-summary.json
+          json-final-path: ./coverage/coverage-final.json
+          threshold: 80  # Optional: block PR nếu coverage dưới 80%

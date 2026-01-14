@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/slice/authSlice';
 

@@ -124,3 +124,19 @@ export const deleteProjectAPI = async (projectId: number): Promise<boolean> => {
         throw error;
     }
 };
+
+export const getProjectsByMemberIdAPI = async (memberId: number) => {
+    try {
+        const token = localStorage.getItem("token");
+        const url = `${API_BASE_URL}/project/member/${memberId}`;
+        const response = await axios.get<ProjectResponse[]>(url, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error getting projects by member ID:", error);
+        throw error;
+    }
+};

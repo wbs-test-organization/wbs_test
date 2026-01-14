@@ -166,7 +166,7 @@ public class AuthService : IAuthService
         await smtp.DisconnectAsync(true);
     }
 
-    public string VerificationEmailContent(Member member)
+    public static string VerificationEmailContent(Member member)
     {
         var verifyLink = $"http://localhost:3000/verify-email?code={member.ActivatedCode}&email={Uri.EscapeDataString(member.Email)}";
 
@@ -186,7 +186,7 @@ public class AuthService : IAuthService
         """;
     }
 
-    public string ChangePasswordContent(Member member)
+    public static string ChangePasswordContent(Member member)
     {
         var verifyLink = $"http://localhost:3000/reset-password?code={member.ResetCode}&email={Uri.EscapeDataString(member.Email)}";
 

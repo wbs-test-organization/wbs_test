@@ -1,5 +1,5 @@
 import Store from "../store/Store";
-import { getAllProjectAPI, createProjectAPI, type CreateProjectRequest, type UpdateProjectRequest, updateProjectAPI, getProjectByIdAPI, deleteProjectAPI } from "../api/projectAPI";
+import { getAllProjectAPI, createProjectAPI, type CreateProjectRequest, type UpdateProjectRequest, updateProjectAPI, getProjectByIdAPI, deleteProjectAPI, getProjectsByMemberIdAPI } from "../api/projectAPI";
 import {
     setLoading,
     setProjects,
@@ -148,6 +148,32 @@ export class ProjectService {
             return { success: false, error: errorMessage };
         } finally {
             dispatch(setLoading(false));
+        }
+    }
+
+    static async getProjectsByMemberId(memberId: number) {
+        try {
+            console.log("ProjectService: Start fetch projects by member id");
+            dispatch(setLoading(true));
+            const projects = await getProjectsByMemberIdAPI(memberId);
+            if (projects) {
+                console.log("ProjectService: Fetch projects by member id successful");
+                dispatch(setProjects(projects));
+                return { success: true, data: projects };
+            } else {
+                console.log("ProjectService: No data received");
+                dispatch(setError("No projects found"));
+                return { success: false, error: "No projects found" };
+            }
+        } catch (err: unknown) {
+            console.error("ProjectService: Fetch projects by member id error:", err);
+
+            const errorMessage =
+                err instanceof Error
+                    ? err.message
+                    : "An unknown error occurred while fetching projects by member id";
+            dispatch(setError(errorMessage));
+            return { success: false, error: errorMessage };
         }
     }
 }

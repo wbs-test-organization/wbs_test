@@ -5,12 +5,14 @@ import type { RootState } from '../store/Store';
 import { ProjectService } from "../service/projectService";
 import { ProjectStatusService } from '../service/projectStatusService';
 import { MemberService } from '../service/memberService';
-import { message } from 'antd';
+import { message, Switch } from 'antd';
 
 const Home: React.FC = () => {
     const { projects, isLoading } = useSelector((state: RootState) => state.project);
     const { projectStatuses } = useSelector((state: RootState) => state.projectStatus);
     const { members } = useSelector((state: RootState) => state.member);
+    const loginMemberId = useSelector((state: RootState) => state.auth.member?.memberId);
+    const [showAllProjects, setShowAllProjects] = useState(false);
     const [currentEditId, setCurrentEditId] = useState<number | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -32,10 +34,21 @@ const Home: React.FC = () => {
         projectLeadId: 1
     })
     useEffect(() => {
-        ProjectService.getAllProjects();
         ProjectStatusService.getAllProjectStatuses();
         MemberService.getAllMembers();
-    }, []);
+
+        const fetchProjects = async () => {
+            if (!loginMemberId) return;
+
+            if (showAllProjects) {
+                await ProjectService.getAllProjects();
+            } else {
+                await ProjectService.getProjectsByMemberId(Number(loginMemberId));
+            }
+        };
+
+        fetchProjects();
+    }, [showAllProjects, loginMemberId]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -151,11 +164,13 @@ const Home: React.FC = () => {
                             Add New Project
                         </button>
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-                            <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg">
-                                <button className="px-6 py-2.5 text-sm font-semibold text-white bg-green-200 rounded-lg">
-                                    All
-                                </button>
-                            </div>
+                            <Switch 
+                                checked={showAllProjects}
+                                onChange={(checked) => setShowAllProjects(checked)}
+                                className="text-sm font-semibold text-white rounded-lg flex bg-gray-300 dark:bg-gray-700 rounded-lg"
+                                checkedChildren={<span className="text-white font-bold">All</span>}
+                                unCheckedChildren={<span className="text-white">My Projects</span>}> 
+                            </Switch>
                             <div className="relative">
                                 <input
                                     type="text"

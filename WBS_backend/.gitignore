@@ -77,3 +77,4 @@ TestResults/
 *.env
 production.env
 .env.local
+mail.env

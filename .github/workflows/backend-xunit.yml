@@ -94,6 +94,13 @@ jobs:
           reporter: dotnet-trx
           fail-on-error: false
 
+      - name: Generate HTML Report
+        if: always()
+        run: |
+          npm install -g xunit-viewer
+          xunit-viewer -r TestResults/test-results.trx -o TestResults/test-report.html
+        working-directory: WBS_backend.Tests
+
       - name: List final TestResults
         if: always()
         run: ls -laR TestResults || true

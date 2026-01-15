@@ -31,7 +31,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-dotnet@v4
-        with: { dotnet-version: "8.0.x" }
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
       - name: Install MySQL client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
@@ -44,24 +47,21 @@ jobs:
           done
           exit 1
 
-      - name: Restore
+      - name: Restore solution
         run: dotnet restore
-        working-directory: WBS_backend
+        working-directory: .
 
-      - name: Build
-        run: dotnet build --no-restore
-        working-directory: WBS_backend
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+        working-directory: .
 
-      - name: Set RESULTS_DIR
-        run: echo "RESULTS_DIR=$(pwd)/TestResults" >> $GITHUB_ENV
-        working-directory: WBS_backend.Tests
-
-      - name: Prepare results directory
-        run: mkdir -p "$RESULTS_DIR"
-        working-directory: WBS_backend.Tests
-
-      - name: Run tests
-        run: dotnet test --no-build --logger "trx;LogFileName=test-results.trx" --results-directory "$RESULTS_DIR"
+      - name: Run tests with TRX output
+        run: |
+          mkdir -p TestResults
+          dotnet test --configuration Release --no-build \
+            --logger "trx;LogFileName=test-results.trx" \
+            --logger "console;verbosity=detailed" \
+            --results-directory TestResults
         working-directory: WBS_backend.Tests
         env:
           ConnectionStrings__DefaultConnection: ${{ env.ConnectionStrings__DefaultConnection }}
@@ -69,41 +69,33 @@ jobs:
           Jwt__Issuer: ${{ env.Jwt__Issuer }}
           Jwt__Audience: ${{ env.Jwt__Audience }}
 
-      - name: Locate TRX
-        id: find_trx
+      - name: Debug - List all files
+        if: always()
         run: |
-          set -e
-          find "$RESULTS_DIR" -type f -maxdepth 3 -print || true
-          TRX=$(find "$RESULTS_DIR" -maxdepth 3 -name "*.trx" | head -n1 || true)
-          if [ -z "$TRX" ]; then
-            TRX=$(find . -maxdepth 6 -name "*.trx" | head -n1 || true)
-          fi
-          if [ -z "$TRX" ]; then
-            echo "No TRX found" >&2
-            exit 1
-          fi
-          echo "Found TRX: $TRX"
-          echo "trx=$TRX" >> "$GITHUB_OUTPUT"
+          echo "=== TestResults folder ==="
+          ls -laR TestResults || echo "TestResults not found"
+          echo "=== Find all .trx files ==="
+          find . -name "*.trx" -type f 2>/dev/null || echo "No .trx files found"
         working-directory: WBS_backend.Tests
 
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Generate HTML report
-        run: |
-          reportgenerator -reports:${{ steps.find_trx.outputs.trx }} -targetdir:TestResults/html -reporttypes:Html
-        working-directory: WBS_backend.Tests
-
-      - name: Verify results file
         if: always()
         run: |
-          ls -R TestResults || true
-          test -f "${{ steps.find_trx.outputs.trx }}" || (echo "TRX file missing" && exit 1)
+          TRX_FILE=$(find TestResults -name "*.trx" -type f | head -n1)
+          if [ -n "$TRX_FILE" ]; then
+            echo "Generating report from: $TRX_FILE"
+            reportgenerator -reports:"$TRX_FILE" -targetdir:TestResults/html -reporttypes:Html
+          else
+            echo "No TRX file found, skipping report generation"
+          fi
         working-directory: WBS_backend.Tests
 
-      - name: List TestResults
+      - name: List final TestResults
         if: always()
-        run: ls -R TestResults || true
+        run: ls -laR TestResults || true
         working-directory: WBS_backend.Tests
 
       - uses: actions/upload-artifact@v4

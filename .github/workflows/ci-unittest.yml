@@ -2,13 +2,9 @@ name: CI - Unit Tests (Vitest Tests + Coverage)
 
 on:
   push:
-    branches:
-      - main
-      - feunit
+    branches: [main, feature/feunit]
   pull_request:
-    branches:
-      - main
-      - feunit
+    branches: [main, feature/feunit]
 permissions:
   contents: read
   actions: read

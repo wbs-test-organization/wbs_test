@@ -14,6 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 // =========================
 // Load Environment Variables from .env files
 // =========================
+if (File.Exists("mail.env"))
+{
+    DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { "mail.env" }));
+    Console.WriteLine("Loaded environment variables from: mail.env");
+}
 // Khi chạy local (dotnet run), load từ .env.local
 // Khi build Docker, sử dụng production.env (được copy vào container)
 var envFile = builder.Environment.IsDevelopment() ? ".env.local" : "production.env";

@@ -26,6 +26,7 @@ jobs:
       JWT_SECRET: "dev-secret-please-override"
       Jwt__Issuer: "my-local-api"
       Jwt__Audience: "my-local-api"
+      RESULTS_DIR: "${{ github.workspace }}/WBS_backend.Tests/TestResults"
 
     steps:
       - uses: actions/checkout@v4
@@ -53,11 +54,10 @@ jobs:
         working-directory: WBS_backend
 
       - name: Prepare results directory
-        run: mkdir -p TestResults
-        working-directory: WBS_backend.Tests
+        run: mkdir -p "$RESULTS_DIR"
 
       - name: Run tests
-        run: dotnet test --no-build --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+        run: dotnet test --no-build --logger "trx;LogFileName=test-results.trx" --results-directory "$RESULTS_DIR"
         working-directory: WBS_backend.Tests
         env:
           ConnectionStrings__DefaultConnection: ${{ env.ConnectionStrings__DefaultConnection }}
@@ -69,9 +69,10 @@ jobs:
         id: find_trx
         run: |
           set -e
-          TRX=$(find TestResults -maxdepth 3 -name "*.trx" | head -n1 || true)
+          find "$RESULTS_DIR" -type f -maxdepth 3 -print || true
+          TRX=$(find "$RESULTS_DIR" -maxdepth 3 -name "*.trx" | head -n1 || true)
           if [ -z "$TRX" ]; then
-            TRX=$(find . -maxdepth 5 -name "*.trx" | head -n1 || true)
+            TRX=$(find . -maxdepth 6 -name "*.trx" | head -n1 || true)
           fi
           if [ -z "$TRX" ]; then
             echo "No TRX found" >&2

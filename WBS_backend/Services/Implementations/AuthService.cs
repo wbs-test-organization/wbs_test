@@ -161,7 +161,7 @@ public class AuthService : IAuthService
 
         using var smtp = new SmtpClient();
         await smtp.ConnectAsync(_configuration["Smtp:Host"], int.Parse(_configuration["Smtp:Port"]), MailKit.Security.SecureSocketOptions.StartTls);
-        await smtp.AuthenticateAsync(_configuration["Smtp:Username"], _configuration["Smtp:Password"]);
+        await smtp.AuthenticateAsync(_configuration["Smtp:Username"], Environment.GetEnvironmentVariable("SMTP__PASSWORD"));
         await smtp.SendAsync(email);
         await smtp.DisconnectAsync(true);
     }

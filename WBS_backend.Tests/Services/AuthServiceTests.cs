@@ -255,7 +255,7 @@ namespace WBS_backend.Tests.Services
                 ActivatedCode = "ABC123"
             };
 
-            var content = service.VerificationEmailContent(member);
+            var content = AuthService.VerificationEmailContent(member);
 
             var encodedEmail = Uri.EscapeDataString(member.Email);
             content.Should().Contain(encodedEmail);

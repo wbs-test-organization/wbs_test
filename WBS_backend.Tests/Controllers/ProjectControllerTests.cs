@@ -132,7 +132,7 @@ namespace WBS_backend.Tests.Controllers
                 ProjectName = "New Project",
                 ProjectCode = "PRJ001",
                 ProjectStatusId = 1,
-                MemberAuthorId = 1
+                ProjectLeadId = 1
             };
             var expectedProject = new Project 
             { 
@@ -175,7 +175,7 @@ namespace WBS_backend.Tests.Controllers
                 ProjectName = "Test",
                 ProjectCode = "PRJ001",
                 ProjectStatusId = 1,
-                MemberAuthorId = 1
+                ProjectLeadId = 1
             };
             _mockProjectService.Setup(s => s.CreateProject(createRequest))
                 .ThrowsAsync(new ArgumentException("Invalid project data"));
@@ -197,7 +197,7 @@ namespace WBS_backend.Tests.Controllers
                 ProjectName = "Test",
                 ProjectCode = "PRJ001",
                 ProjectStatusId = 1,
-                MemberAuthorId = 1
+                ProjectLeadId = 1
             };
             _mockProjectService.Setup(s => s.CreateProject(createRequest))
                 .ThrowsAsync(new Exception("Server error"));

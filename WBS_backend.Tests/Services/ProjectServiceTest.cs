@@ -114,7 +114,7 @@ namespace WBS_backend.Tests.Services
                 ProjectStatusId = 1,
                 ExpectedStartDate = new DateTime(2024, 1, 1),
                 ExpectedEndDate = new DateTime(2024, 2, 1),
-                MemberAuthorId = 10
+                ProjectLeadId = 10
             };
 
             var project = await service.CreateProject(request);

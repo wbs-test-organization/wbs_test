@@ -1,0 +1,131 @@
+name: Backend xUnit
+on:
+  push:
+    branches: [ main, xunit ]
+  pull_request:
+    branches: [ main, xunit ]
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wbs
+          MYSQL_USER: wbs
+          MYSQL_PASSWORD: wbs
+        ports: [ "3306:3306" ]
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -proot"
+          --health-interval=10s --health-timeout=5s --health-retries=5
+
+    env:
+      ConnectionStrings__DefaultConnection: "Server=127.0.0.1;Port=3306;Database=wbs;Uid=wbs;Pwd=wbs;"
+      JWT_SECRET: "dev-secret-please-override-32chars!"
+      Jwt__Issuer: "my-local-api"
+      Jwt__Audience: "my-local-api"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Install MySQL client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -proot && exit 0
+            sleep 2
+          done
+          exit 1
+
+      - name: Restore solution
+        run: dotnet restore
+        working-directory: .
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+        working-directory: .
+
+      - name: Run tests with Coverage
+        id: run_tests
+        continue-on-error: true
+        run: |
+          mkdir -p TestResults
+          dotnet test --configuration Release --no-build \
+            --logger "trx;LogFileName=test-results.trx" \
+            --logger "console;verbosity=detailed" \
+            --collect:"XPlat Code Coverage" \
+            --results-directory TestResults
+        working-directory: WBS_backend.Tests
+        env:
+          ConnectionStrings__DefaultConnection: ${{ env.ConnectionStrings__DefaultConnection }}
+          JWT_SECRET: ${{ env.JWT_SECRET }}
+          Jwt__Issuer: ${{ env.Jwt__Issuer }}
+          Jwt__Audience: ${{ env.Jwt__Audience }}
+
+      - name: Debug - List all files
+        if: always()
+        run: |
+          echo "=== TestResults folder ==="
+          ls -laR TestResults || echo "TestResults not found"
+          echo "=== Find coverage files ==="
+          find . -name "coverage.cobertura.xml" -type f 2>/dev/null || echo "No coverage files found"
+        working-directory: WBS_backend.Tests
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: xUnit Tests
+          path: WBS_backend.Tests/TestResults/*.trx
+          reporter: dotnet-trx
+          fail-on-error: false
+
+      - name: Install ReportGenerator
+        if: always()
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generate Coverage HTML Report
+        if: always()
+        run: |
+          COVERAGE_FILE=$(find TestResults -name "coverage.cobertura.xml" -type f | head -n1)
+          if [ -n "$COVERAGE_FILE" ]; then
+            echo "Found coverage file: $COVERAGE_FILE"
+            reportgenerator \
+              -reports:"$COVERAGE_FILE" \
+              -targetdir:TestResults/coverage-report \
+              -reporttypes:Html
+            echo "Coverage report generated"
+          else
+            echo "No coverage file found"
+          fi
+        working-directory: WBS_backend.Tests
+
+      - name: List final TestResults
+        if: always()
+        run: ls -laR TestResults || true
+        working-directory: WBS_backend.Tests
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dotnet-test-results
+          path: WBS_backend.Tests/TestResults
+
+      - name: Fail if tests failed
+        if: steps.run_tests.outcome == 'failure'
+        run: exit 1

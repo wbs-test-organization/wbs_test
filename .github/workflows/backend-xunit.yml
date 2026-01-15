@@ -23,7 +23,7 @@ jobs:
 
     env:
       ConnectionStrings__DefaultConnection: "Server=127.0.0.1;Port=3306;Database=wbs;Uid=wbs;Pwd=wbs;"
-      JWT_SECRET: "dev-secret-please-override"
+      JWT_SECRET: "dev-secret-please-override-32chars!"
       Jwt__Issuer: "my-local-api"
       Jwt__Audience: "my-local-api"
 
@@ -56,6 +56,8 @@ jobs:
         working-directory: .
 
       - name: Run tests with TRX output
+        id: run_tests
+        continue-on-error: true
         run: |
           mkdir -p TestResults
           dotnet test --configuration Release --no-build \
@@ -103,3 +105,7 @@ jobs:
         with:
           name: dotnet-test-results
           path: WBS_backend.Tests/TestResults
+
+      - name: Fail if tests failed
+        if: steps.run_tests.outcome == 'failure'
+        run: exit 1

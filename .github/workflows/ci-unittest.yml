@@ -4,12 +4,11 @@ on:
   push:
     branches:
       - main
-      - fe-unit
+      - feunit
   pull_request:
     branches:
       - main
-      - fe-unit
-
+      - feunit
 permissions:
   contents: read
   actions: read

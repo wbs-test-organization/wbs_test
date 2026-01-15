@@ -65,6 +65,21 @@ jobs:
           Jwt__Issuer: ${{ env.Jwt__Issuer }}
           Jwt__Audience: ${{ env.Jwt__Audience }}
 
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML report
+        run: |
+          reportgenerator -reports:TestResults/test-results.trx -targetdir:TestResults/html -reporttypes:Html
+        working-directory: WBS_backend.Tests
+
+      - name: Verify results file
+        if: always()
+        run: |
+          ls -R TestResults || true
+          test -f TestResults/test-results.trx || (echo "TRX file missing" && exit 1)
+        working-directory: WBS_backend.Tests
+
       - name: List TestResults
         if: always()
         run: ls -R TestResults || true
@@ -74,4 +89,4 @@ jobs:
         if: always()
         with:
           name: dotnet-test-results
-          path: WBS_backend.Tests/TestResults/**
+          path: WBS_backend.Tests/TestResults

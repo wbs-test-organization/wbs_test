@@ -179,99 +179,99 @@ namespace WBS_backend.Tests.Controllers
 
         #endregion
 
-        // #region VerifyEmail Tests
+        #region VerifyEmail Tests
 
-        // [Fact]
-        // public async Task VerifyEmail_ReturnsOkResult_WhenVerificationSuccessful()
-        // {
-        //     // Arrange
-        //     string email = "test@example.com";
-        //     string code = "123456";
-        //     var expectedResponse = new UserResponse
-        //     {
-        //         Email = email,
-        //         MemberFullName = "Test User"
-        //     };
-        //     _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
-        //         .ReturnsAsync(expectedResponse);
+        [Fact]
+        public async Task VerifyEmail_ReturnsOkResult_WhenVerificationSuccessful()
+        {
+            // Arrange
+            string email = "test@example.com";
+            string code = "123456";
+            var expectedResponse = new UserResponse
+            {
+                Email = email,
+                MemberFullName = "Test User"
+            };
+            _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
+                .ReturnsAsync(expectedResponse);
 
-        //     // Act
-        //     var result = await _controller.VerifyEmail(email, code);
+            // Act
+            var result = await _controller.VerifyEmail(email, code);
 
-        //     // Assert
-        //     var okResult = Assert.IsType<OkObjectResult>(result);
-        //     okResult.Value.Should().NotBeNull();
-        // }
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            okResult.Value.Should().NotBeNull();
+        }
 
-        // [Fact]
-        // public async Task VerifyEmail_ReturnsBadRequest_WhenInvalidOperationExceptionThrown()
-        // {
-        //     // Arrange
-        //     string email = "test@example.com";
-        //     string code = "invalid-code";
-        //     _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
-        //         .ThrowsAsync(new InvalidOperationException("Mã xác thực không hợp lệ"));
+        [Fact]
+        public async Task VerifyEmail_ReturnsBadRequest_WhenInvalidOperationExceptionThrown()
+        {
+            // Arrange
+            string email = "test@example.com";
+            string code = "invalid-code";
+            _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
+                .ThrowsAsync(new InvalidOperationException("Mã xác thực không hợp lệ"));
 
-        //     // Act
-        //     var result = await _controller.VerifyEmail(email, code);
+            // Act
+            var result = await _controller.VerifyEmail(email, code);
 
-        //     // Assert
-        //     var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-        //     badRequestResult.Value.Should().Be("Mã xác thực không hợp lệ");
-        // }
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            badRequestResult.Value.Should().Be("Mã xác thực không hợp lệ");
+        }
 
-        // [Fact]
-        // public async Task VerifyEmail_ReturnsInternalServerError_WhenExceptionThrown()
-        // {
-        //     // Arrange
-        //     string email = "test@example.com";
-        //     string code = "123456";
-        //     _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
-        //         .ThrowsAsync(new Exception("Database error"));
+        [Fact]
+        public async Task VerifyEmail_ReturnsInternalServerError_WhenExceptionThrown()
+        {
+            // Arrange
+            string email = "test@example.com";
+            string code = "123456";
+            _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
+                .ThrowsAsync(new Exception("Database error"));
 
-        //     // Act
-        //     var result = await _controller.VerifyEmail(email, code);
+            // Act
+            var result = await _controller.VerifyEmail(email, code);
 
-        //     // Assert
-        //     var statusCodeResult = Assert.IsType<ObjectResult>(result);
-        //     statusCodeResult.StatusCode.Should().Be(500);
-        //     statusCodeResult.Value.Should().Be("Lỗi hệ thống");
-        // }
+            // Assert
+            var statusCodeResult = Assert.IsType<ObjectResult>(result);
+            statusCodeResult.StatusCode.Should().Be(500);
+            statusCodeResult.Value.Should().Be("Lỗi hệ thống");
+        }
 
-        // [Fact]
-        // public async Task VerifyEmail_HandlesEmptyEmail()
-        // {
-        //     // Arrange
-        //     string email = "";
-        //     string code = "123456";
-        //     _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
-        //         .ThrowsAsync(new InvalidOperationException("Email không được để trống"));
+        [Fact]
+        public async Task VerifyEmail_HandlesEmptyEmail()
+        {
+            // Arrange
+            string email = "";
+            string code = "123456";
+            _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
+                .ThrowsAsync(new InvalidOperationException("Email không được để trống"));
 
-        //     // Act
-        //     var result = await _controller.VerifyEmail(email, code);
+            // Act
+            var result = await _controller.VerifyEmail(email, code);
 
-        //     // Assert
-        //     var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-        //     badRequestResult.Value.Should().Be("Email không được để trống");
-        // }
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            badRequestResult.Value.Should().Be("Email không được để trống");
+        }
 
-        // [Fact]
-        // public async Task VerifyEmail_HandlesEmptyCode()
-        // {
-        //     // Arrange
-        //     string email = "test@example.com";
-        //     string code = "";
-        //     _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
-        //         .ThrowsAsync(new InvalidOperationException("Mã xác thực không được để trống"));
+        [Fact]
+        public async Task VerifyEmail_HandlesEmptyCode()
+        {
+            // Arrange
+            string email = "test@example.com";
+            string code = "";
+            _mockAuthService.Setup(s => s.VerifyEmailAsync(email, code))
+                .ThrowsAsync(new InvalidOperationException("Mã xác thực không được để trống"));
 
-        //     // Act
-        //     var result = await _controller.VerifyEmail(email, code);
+            // Act
+            var result = await _controller.VerifyEmail(email, code);
 
-        //     // Assert
-        //     var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-        //     badRequestResult.Value.Should().Be("Mã xác thực không được để trống");
-        // }
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            badRequestResult.Value.Should().Be("Mã xác thực không được để trống");
+        }
 
-        // #endregion
+        #endregion
     }
 }

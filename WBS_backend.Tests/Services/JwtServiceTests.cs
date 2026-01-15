@@ -58,6 +58,9 @@ namespace WBS_backend.Tests.Services
         [Fact]
         public void ValidateToken_Should_Return_MemberId_For_Valid_Token()
         {
+            // Set JWT_SECRET env to match Jwt:Key in config for signing
+            Environment.SetEnvironmentVariable("JWT_SECRET", "super_secret_key_super_secret_key");
+
             var config = CreateConfiguration();
             var service = new JwtService(config);
 
@@ -75,6 +78,9 @@ namespace WBS_backend.Tests.Services
             var result = service.ValidateToken(token);
 
             result.Should().Be(42);
+
+            // Cleanup
+            Environment.SetEnvironmentVariable("JWT_SECRET", null);
         }
 
         [Fact]

@@ -65,4 +65,4 @@ jobs:
         if: always()
         with:
           name: dotnet-test-results
-          path: WBS_backend.Tests/TestResults
+          path: WBS_backend.Tests/TestResults/**

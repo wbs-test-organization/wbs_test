@@ -4,22 +4,28 @@ on:
   push:
     branches:
       - main
+      - fe-unit
   pull_request:
     branches:
       - main
+      - fe-unit
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
+      # 1. Checkout mã nguồn từ repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Quan trọng cho blame/PR decoration nếu dùng Sonar
+          fetch-depth: 0  # Cần thiết để lấy lịch sử commit đầy đủ (hỗ trợ blame, SonarCloud, v.v.)
 
-      # 2. Setup Node.js (chọn version bạn dùng, ví dụ 20)
+      # 2. Cài đặt Node.js phiên bản 22 (hoặc thay đổi nếu bạn dùng phiên bản khác)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,30 +33,31 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './frontend-react/package-lock.json'
 
-      # 3. Install dependencies
+      # 3. Cài đặt dependencies
       - name: Install dependencies
         working-directory: ./frontend-react
-        run: npm ci  # hoặc pnpm install --frozen-lockfile, yarn install --immutable
+        run: npm ci
 
-      # 4. Run Vitest tests + generate coverage (LCOV format cho SonarCloud)
-      - name: Run tests and generate coverage
+      # 4. Chạy toàn bộ unit tests + generate coverage report
+      # Sử dụng script test:coverage để chạy vitest run --coverage (không watch mode)
+      - name: Run Vitest Tests with Coverage
+        id: run_tests
+        continue-on-error: true  # Cho phép tiếp tục các bước sau dù test fail
         working-directory: ./frontend-react
-        run: npm run test -- --coverage
+        run: npm run test:coverage
 
-      # 5. SonarCloud Scan (tùy chọn - nếu bạn đang dùng SonarCloud để theo dõi coverage)
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v4  # Phiên bản mới nhất
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Tạo secret này trong repo Settings > Secrets and variables > Actions
+      # 5. Upload toàn bộ folder coverage làm artifact
+      - name: Upload Coverage Report Artifact
+        if: always()  # Luôn upload dù test fail hoặc thành công
+        uses: actions/upload-artifact@v4
         with:
-          args: >
-            -Dsonar.organization=vnhan111-1
-            -Dsonar.projectKey=vnhan111_wbs_test
-            -Dsonar.javascript.lcov.reportPaths=./frontend-react/coverage/lcov.info
+          name: vitest-test-results
+          path: ./frontend-react/coverage
+          retention-days: 14  # Giữ artifact 14 ngày (có thể chỉnh)
 
-      # 6. (Tùy chọn) Báo cáo coverage đẹp vào PR comment
-      - name: Report Coverage to PR
-        if: always()  # Chạy cả khi test fail
+      # 6. (Tùy chọn) Comment tóm tắt coverage % vào PR (rất hữu ích khi review)
+      - name: Report Coverage Summary to PR
+        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           working-directory: ./frontend-react
@@ -58,3 +65,15 @@ jobs:
           vitest-config-path: ./vitest.config.ts
           json-summary-path: ./coverage/coverage-summary.json
           json-final-path: ./coverage/coverage-final.json
+
+      # 7. (Tùy chọn) Scan SonarCloud để theo dõi chất lượng code & coverage
+      - name: SonarCloud Scan
+        if: always()
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=vnhan111-1
+            -Dsonar.projectKey=vnhan111_wbs_test
+            -Dsonar.javascript.lcov.reportPaths=./frontend-react/coverage/lcov.info

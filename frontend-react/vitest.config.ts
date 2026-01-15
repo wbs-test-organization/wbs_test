@@ -7,14 +7,15 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/unittest/setupTests.ts',
+    exclude: ['node_modules/**', 'dist/**', '**/test_e2e/**', '**/*.spec.ts'],
     
     coverage: {
       enabled: true,
       provider: 'v8', 
       reporter: ['text', 'json', 'html','json-summary', 'lcov'], 
       reportsDirectory: './coverage',
-      include: ['src/**/*.{ts,tsx,js,jsx}'],
-      exclude: ['node_modules/**', 'dist/**', '**/*.test.ts']
+      include: ['src/**/*.{tsx,js,jsx}'],
+      exclude: ['node_modules/**', 'dist/**', '**/*.test.ts', '**/*.spec.{ts,tsx}', '**/test_e2e/**']
     },
   },
 })

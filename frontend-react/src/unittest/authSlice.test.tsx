@@ -8,10 +8,10 @@ import authReducer, {
     failVerify,
     logout,
     clearError,
-    setUser,
+    setMember,
     reset,
 } from '../redux/slice/authSlice';
-import type { UserInfo } from '..//redux/slice/authSlice';
+import type { UserResponse } from '..//redux/slice/authSlice';
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -35,7 +35,7 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 describe('authSlice reducer', () => {
-    const mockUser: UserInfo = {
+    const mockMember: UserResponse = {
         memberId: '1',
         memberFullName: 'Test User',
         email: 'test@example.com',
@@ -45,7 +45,7 @@ describe('authSlice reducer', () => {
     };
 
     const initialState = {
-        user: null,
+        member: null,
         token: null,
         isAuthenticated: false,
         error: null,
@@ -61,10 +61,10 @@ describe('authSlice reducer', () => {
     });
 
     describe('successLogin', () => {
-        it('should handle successful login with user', () => {
+        it('should handle successful login with member', () => {
             const payload = {
                 token: 'fake-jwt-token',
-                user: mockUser,
+                member: mockMember,
                 message: 'Login successful',
                 success: true,
             };
@@ -72,14 +72,14 @@ describe('authSlice reducer', () => {
             const state = authReducer(initialState, successLogin(payload));
 
             expect(state.token).toBe('fake-jwt-token');
-            expect(state.user).toEqual(mockUser);
+            expect(state.member).toEqual(mockMember);
             expect(state.isAuthenticated).toBe(true);
             expect(state.error).toBe(null);
             expect(localStorage.setItem).toHaveBeenCalledWith('token', 'fake-jwt-token');
-            expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify(mockUser));
+            expect(localStorage.setItem).toHaveBeenCalledWith('member', JSON.stringify(mockMember));
         });
 
-        it('should handle successful login without user', () => {
+        it('should handle successful login without member', () => {
             const payload = {
                 token: 'fake-jwt-token',
                 message: 'Login successful',
@@ -89,10 +89,10 @@ describe('authSlice reducer', () => {
             const state = authReducer(initialState, successLogin(payload));
 
             expect(state.token).toBe('fake-jwt-token');
-            expect(state.user).toBe(null); // user không có → giữ nguyên null
+            expect(state.member).toBe(null); // member không có → giữ nguyên null
             expect(state.isAuthenticated).toBe(true);
             expect(localStorage.setItem).toHaveBeenCalledWith('token', 'fake-jwt-token');
-            expect(localStorage.setItem).not.toHaveBeenCalledWith('user', expect.any(String));
+            expect(localStorage.setItem).not.toHaveBeenCalledWith('member', expect.any(String));
         });
     });
 
@@ -105,9 +105,9 @@ describe('authSlice reducer', () => {
     });
 
     it('should handle successRegister', () => {
-        const state = authReducer(initialState, successRegister(mockUser));
+        const state = authReducer(initialState, successRegister(mockMember));
 
-        expect(state.user).toEqual(mockUser);
+        expect(state.member).toEqual(mockMember);
         expect(state.error).toBe(null);
     });
 
@@ -118,17 +118,17 @@ describe('authSlice reducer', () => {
     });
 
     it('should handle successVerify', () => {
-        const stateWithUser = { ...initialState, user: { ...mockUser, isActive: false } };
-        const state = authReducer(stateWithUser, successVerify());
+        const stateWithMember = { ...initialState, member: { ...mockMember, isActive: false } };
+        const state = authReducer(stateWithMember, successVerify());
 
-        expect(state.user?.isActive).toBe(true);
+        expect(state.member?.isActive).toBe(true);
         expect(state.error).toBe(null);
     });
 
-    it('should handle successVerify when no user', () => {
+    it('should handle successVerify when no member', () => {
         const state = authReducer(initialState, successVerify());
 
-        expect(state.user).toBe(null);
+        expect(state.member).toBe(null);
         expect(state.error).toBe(null);
     });
 
@@ -140,7 +140,7 @@ describe('authSlice reducer', () => {
 
     it('should handle logout', () => {
         const loggedInState = {
-            user: mockUser,
+            member: mockMember,
             token: 'fake-token',
             isAuthenticated: true,
             error: null,
@@ -148,12 +148,12 @@ describe('authSlice reducer', () => {
 
         const state = authReducer(loggedInState, logout());
 
-        expect(state.user).toBe(null);
+        expect(state.member).toBe(null);
         expect(state.token).toBe(null);
         expect(state.isAuthenticated).toBe(false);
         expect(state.error).toBe(null);
         expect(localStorage.removeItem).toHaveBeenCalledWith('token');
-        expect(localStorage.removeItem).toHaveBeenCalledWith('user');
+        expect(localStorage.removeItem).toHaveBeenCalledWith('member');
     });
 
     it('should handle clearError', () => {
@@ -163,26 +163,26 @@ describe('authSlice reducer', () => {
         expect(state.error).toBe(null);
     });
 
-    it('should handle setUser', () => {
-        const state = authReducer(initialState, setUser(mockUser));
+    it('should handle setMember', () => {
+        const state = authReducer(initialState, setMember(mockMember));
 
-        expect(state.user).toEqual(mockUser);
-        expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify(mockUser));
+        expect(state.member).toEqual(mockMember);
+        expect(localStorage.setItem).toHaveBeenCalledWith('member', JSON.stringify(mockMember));
         expect(localStorage.setItem).toHaveBeenCalledWith('email', 'testuser');
     });
 
-    it('should handle setUser without loginName', () => {
-        const userWithoutLoginName = { ...mockUser, loginName: undefined };
-        const state = authReducer(initialState, setUser(userWithoutLoginName));
+    it('should handle setMember without loginName', () => {
+        const memberWithoutLoginName = { ...mockMember, loginName: undefined };
+        const state = authReducer(initialState, setMember(memberWithoutLoginName));
 
-        expect(state.user).toEqual(userWithoutLoginName);
-        expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify(userWithoutLoginName));
+        expect(state.member).toEqual(memberWithoutLoginName);
+        expect(localStorage.setItem).toHaveBeenCalledWith('member', JSON.stringify(memberWithoutLoginName));
         expect(localStorage.setItem).not.toHaveBeenCalledWith('email', expect.any(String));
     });
 
     it('should handle reset', () => {
         const loggedInState = {
-            user: mockUser,
+            member: mockMember,
             token: 'fake-token',
             isAuthenticated: true,
             error: 'Some error',
@@ -192,13 +192,13 @@ describe('authSlice reducer', () => {
 
         expect(state).toEqual(initialState);
         expect(localStorage.removeItem).toHaveBeenCalledWith('token');
-        expect(localStorage.removeItem).toHaveBeenCalledWith('user');
+        expect(localStorage.removeItem).toHaveBeenCalledWith('member');
     });
 
     it('should load initial state from localStorage', () => {
         localStorageMock.getItem.mockImplementation((key) => {
             if (key === 'token') return 'saved-token';
-            if (key === 'user') return JSON.stringify(mockUser);
+            if (key === 'member') return JSON.stringify(mockMember);
             return null;
         });
 

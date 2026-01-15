@@ -7,6 +7,8 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import Home from '../pages/Home';
 import { ProjectService } from '../service/projectService';
+import { ProjectStatusService } from '../service/projectStatusService';
+import { MemberService } from '../service/memberService';
 import projectReducer from '../redux/slice/projectSlice';
 import { message } from 'antd';
 import type { ProjectResponse } from '../api/projectAPI';
@@ -41,10 +43,23 @@ vi.mock('antd', async () => {
 vi.mock('../service/projectService', () => ({
     ProjectService: {
         getAllProjects: vi.fn(),
+        getProjectsByMemberId: vi.fn(),
         createProject: vi.fn(),
         getProjectById: vi.fn(),
         updateProject: vi.fn(),
         deleteProject: vi.fn(),
+    },
+}));
+
+vi.mock('../service/projectStatusService', () => ({
+    ProjectStatusService: {
+        getAllProjectStatuses: vi.fn(),
+    },
+}));
+
+vi.mock('../service/memberService', () => ({
+    MemberService: {
+        getAllMembers: vi.fn(),
     },
 }));
 
@@ -53,23 +68,46 @@ const mockProjects: ProjectResponse[] = [
     { projectId: 2, projectCode: "PRJ002", projectName: "Project Beta", projectStatusId: 1, projectStatusName: "New", expectedStartDate: "2026-02-01T00:00:00", expectedEndDate: "2026-12-31T00:00:00", workProgress: 0, projectDeleteStatus: true, authorFullName: "Jane Smith", memberAuthorId: 6 },
 ];
 
+const mockProjectStatuses = [
+    { projectStatusId: 1, statusName: "New" },
+    { projectStatusId: 2, statusName: "In Progress" },
+    { projectStatusId: 3, statusName: "Completed" },
+];
+
+const mockMembers = [
+    { memberId: 1, memberFullName: "Admin User" },
+    { memberId: 5, memberFullName: "John Doe" },
+    { memberId: 6, memberFullName: "Jane Smith" },
+];
+
 describe('Home Component - Project Management', () => {
     let store: any;
 
     beforeEach(() => {
         vi.clearAllMocks();
         store = configureStore({
-            reducer: { project: projectReducer },
+            reducer: { 
+                project: projectReducer,
+                projectStatus: (state = { projectStatuses: mockProjectStatuses }) => state,
+                member: (state = { members: mockMembers }) => state,
+                auth: (state = { member: { memberId: 1 } }) => state,
+            },
             preloadedState: { 
                 project: { 
                     projects: mockProjects, 
                     isLoading: false, 
                     selectedProject: null, 
                     error: null 
-                } 
+                },
+                projectStatus: { projectStatuses: mockProjectStatuses },
+                member: { members: mockMembers },
+                auth: { member: { memberId: 1 } }
             }
         });
         vi.mocked(ProjectService.getAllProjects).mockResolvedValue({ success: true, data: mockProjects });
+        vi.mocked(ProjectService.getProjectsByMemberId).mockResolvedValue({ success: true, data: [mockProjects[0]] });
+        vi.mocked(ProjectStatusService.getAllProjectStatuses).mockResolvedValue({ success: true, data: mockProjectStatuses });
+        vi.mocked(MemberService.getAllMembers).mockResolvedValue({ success: true, data: mockMembers });
     });
 
     const renderHome = () => render(
@@ -83,7 +121,7 @@ describe('Home Component - Project Management', () => {
     // 1. Render & Filter deleted projects
     it('renders project list correctly and hides deleted projects', async () => {
         renderHome();
-        await waitFor(() => expect(ProjectService.getAllProjects).toHaveBeenCalled());
+        await waitFor(() => expect(ProjectService.getProjectsByMemberId).toHaveBeenCalled());
         expect(screen.getByText('Project Alpha')).toBeInTheDocument();
         expect(screen.queryByText('Project Beta')).not.toBeInTheDocument();
     });
@@ -91,14 +129,22 @@ describe('Home Component - Project Management', () => {
     // 2. Show loading state
     it('displays loading state when fetching projects', () => {
         store = configureStore({
-            reducer: { project: projectReducer },
+            reducer: { 
+                project: projectReducer,
+                projectStatus: (state = { projectStatuses: mockProjectStatuses }) => state,
+                member: (state = { members: mockMembers }) => state,
+                auth: (state = { member: { memberId: 1 } }) => state,
+            },
             preloadedState: { 
                 project: { 
                     projects: [], 
                     isLoading: true, 
                     selectedProject: null, 
                     error: null 
-                } 
+                },
+                projectStatus: { projectStatuses: mockProjectStatuses },
+                member: { members: mockMembers },
+                auth: { member: { memberId: 1 } }
             }
         });
         
@@ -116,14 +162,22 @@ describe('Home Component - Project Management', () => {
     // 3. Show empty state
     it('displays empty state when no projects exist', () => {
         store = configureStore({
-            reducer: { project: projectReducer },
+            reducer: { 
+                project: projectReducer,
+                projectStatus: (state = { projectStatuses: mockProjectStatuses }) => state,
+                member: (state = { members: mockMembers }) => state,
+                auth: (state = { member: { memberId: 1 } }) => state,
+            },
             preloadedState: { 
                 project: { 
                     projects: [], 
                     isLoading: false, 
                     selectedProject: null, 
                     error: null 
-                } 
+                },
+                projectStatus: { projectStatuses: mockProjectStatuses },
+                member: { members: mockMembers },
+                auth: { member: { memberId: 1 } }
             }
         });
         
@@ -226,7 +280,7 @@ describe('Home Component - Project Management', () => {
                 projectStatusId: 1,
                 expectedStartDate: '',
                 expectedEndDate: '',
-                memberAuthorId: 1
+                projectLeadId: 1
             });
         }, { timeout: 3000 });
     });
@@ -451,16 +505,17 @@ describe('Home Component - Project Management', () => {
         await user.type(screen.getByPlaceholderText(/enter project code/i), 'PRJ999');
         await user.type(screen.getByPlaceholderText(/enter project name/i), 'Full Test');
         
-        const statusSelect = screen.getByRole('combobox');
+        const statusSelects = screen.getAllByRole('combobox');
+        const statusSelect = statusSelects[0];
         await user.selectOptions(statusSelect, '2');
         
-        const dateInputs = screen.getAllByDisplayValue('');
-        if (dateInputs[0]) await user.type(dateInputs[0], '2026-01-01');
-        if (dateInputs[1]) await user.type(dateInputs[1], '2026-12-31');
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        if (dateInputs[0]) await user.type(dateInputs[0] as HTMLInputElement, '2026-01-01');
+        if (dateInputs[1]) await user.type(dateInputs[1] as HTMLInputElement, '2026-12-31');
         
-        const authorInput = screen.getByPlaceholderText(/enter name/i);
-        await user.clear(authorInput);
-        await user.type(authorInput, '5');
+        const leaderSelects = screen.getAllByRole('combobox');
+        const leaderSelect = leaderSelects[1];
+        await user.selectOptions(leaderSelect, '5');
         
         expect(screen.getByPlaceholderText(/enter project code/i)).toHaveValue('PRJ999');
     });
@@ -476,9 +531,25 @@ describe('Home Component - Project Management', () => {
         
         await screen.findByDisplayValue('PRJ001');
         
-        const statusSelect = screen.getByRole('combobox');
+        const statusSelects = screen.getAllByRole('combobox');
+        const statusSelect = statusSelects[0];
         await user.selectOptions(statusSelect, '3');
         
         expect(statusSelect).toHaveValue('3');
+    });
+
+    // 24. Test switching between "My Projects" and "All Projects"
+    it('switches between My Projects and All Projects view', async () => {
+        const user = userEvent.setup();
+        renderHome();
+        
+        await waitFor(() => expect(ProjectService.getProjectsByMemberId).toHaveBeenCalled());
+        
+        const switches = screen.getAllByRole('switch');
+        const myProjectsSwitch = switches[0];
+        
+        await user.click(myProjectsSwitch);
+        
+        await waitFor(() => expect(ProjectService.getAllProjects).toHaveBeenCalled());
     });
 });

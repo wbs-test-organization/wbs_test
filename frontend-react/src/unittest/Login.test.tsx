@@ -110,7 +110,7 @@ describe('Login Tests', () => {
         });
 
         await waitFor(() => {
-            expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
+            expect(mockNavigate).toHaveBeenCalledWith('/project');
         }, { timeout: 1000 });
     });
 

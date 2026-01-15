@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+const validUsername = process.env.E2E_USER;
+const validPassword = process.env.E2E_PASS;
+const hasValidCreds = Boolean(validUsername && validPassword);
+
 test.describe('Login Functionality - With Real Backend (Current Component)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login');
@@ -45,9 +49,10 @@ test.describe('Login Functionality - With Real Backend (Current Component)', () 
 
   // 4. Login thành công → dùng tài khoản THẬT trong DB
   test('should login successfully with valid credentials', async ({ page }) => {
-    // <<<--- THAY 2 DÒNG NÀY BẰNG USERNAME + PASSWORD THẬT TRONG DATABASE ---<<<
-    await page.getByPlaceholder('Enter username').fill('a');           // ví dụ
-    await page.getByPlaceholder('Enter password').fill('123456');       // ví dụ
+    test.skip(!hasValidCreds, 'E2E_USER / E2E_PASS not provided');
+
+    await page.getByPlaceholder('Enter username').fill(validUsername!);
+    await page.getByPlaceholder('Enter password').fill(validPassword!);
 
     await page.getByRole('button', { name: 'Login' }).click();
 

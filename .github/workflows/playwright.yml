@@ -1,32 +1,132 @@
-name: Playwright Tests
+name: CI Backend + E2E
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, playwright ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, playwright ]
+
 jobs:
-  test:
-    timeout-minutes: 60
+  backend:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wbs
+          MYSQL_USER: wbs
+          MYSQL_PASSWORD: wbs
+        ports: [ "3306:3306" ]
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -proot"
+          --health-interval=10s --health-timeout=5s --health-retries=5
+
+    env:
+      ConnectionStrings__DefaultConnection: "Server=127.0.0.1;Port=3306;Database=wbs;Uid=wbs;Pwd=wbs;"
+      VITE_API_BASE_URL: "http://127.0.0.1:5000/api"
+      JWT_SECRET: "dev-secret-please-override"
+      Jwt__Issuer: "my-local-api"
+      Jwt__Audience: "my-local-api"
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-        cache: 'npm'
-        cache-dependency-path: ./frontend-react/package-lock.json
-    - name: Install dependencies
-      working-directory: ./frontend-react
-      run: npm ci
-    - name: Install Playwright Browsers
-      working-directory: ./frontend-react
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      working-directory: ./frontend-react
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: frontend-react/playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: "8.0.x" }
+
+      - name: Install MySQL client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+
+      - name: Install dotnet-ef
+        run: |
+          dotnet tool install --global dotnet-ef
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -proot && exit 0
+            sleep 2
+          done
+          exit 1
+
+      - name: Restore
+        run: dotnet restore
+        working-directory: WBS_backend
+
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: WBS_backend
+
+      - name: Migrate DB
+        run: dotnet ef database update
+        working-directory: WBS_backend
+        env:
+          ConnectionStrings__DefaultConnection: ${{ env.ConnectionStrings__DefaultConnection }}
+          JWT_SECRET: ${{ env.JWT_SECRET }}
+          Jwt__Issuer: ${{ env.Jwt__Issuer }}
+          Jwt__Audience: ${{ env.Jwt__Audience }}
+
+      - name: Test
+        run: dotnet test --no-build
+        working-directory: WBS_backend.Tests
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Start backend (for e2e)
+        run: |
+          dotnet run --no-build --urls http://0.0.0.0:5000 > /tmp/backend.log 2>&1 &
+          echo $! > /tmp/backend.pid
+        working-directory: WBS_backend
+        env:
+          ConnectionStrings__DefaultConnection: ${{ env.ConnectionStrings__DefaultConnection }}
+          JWT_SECRET: ${{ env.JWT_SECRET }}
+          Jwt__Issuer: ${{ env.Jwt__Issuer }}
+          Jwt__Audience: ${{ env.Jwt__Audience }}
+
+      - name: Wait backend port
+        run: npx wait-on tcp:127.0.0.1:5000
+
+      - name: Install frontend deps
+        run: npm ci
+        working-directory: frontend-react
+
+      - name: Build frontend
+        run: npm run build
+        working-directory: frontend-react
+        env:
+          VITE_API_BASE_URL: ${{ env.VITE_API_BASE_URL }}
+
+      - name: Start preview server
+        run: npm run preview -- --host --port 3000 > /tmp/frontend.log 2>&1 &
+        working-directory: frontend-react
+        env:
+          VITE_API_BASE_URL: ${{ env.VITE_API_BASE_URL }}
+
+      - name: Wait frontend
+        run: npx wait-on http://127.0.0.1:3000
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        working-directory: frontend-react
+
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=line,html
+        working-directory: frontend-react
+        env:
+          E2E_USER: ${{ secrets.E2E_USER }}
+          E2E_PASS: ${{ secrets.E2E_PASS }}
+          VITE_API_BASE_URL: ${{ env.VITE_API_BASE_URL }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: frontend-react/playwright-report
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: backend-logs
+          path: /tmp/backend.log

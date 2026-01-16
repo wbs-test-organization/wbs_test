@@ -3,12 +3,14 @@ import authReducer from "../redux/slice/authSlice"
 import projectReducer from "../redux/slice/projectSlice"
 import projectStatusReducer from "../redux/slice/projectStatusSlice"
 import memberReducer from "../redux/slice/memberSlice";
+import projectMemberRuducer from "../redux/slice/projectMemberSlice";
 
 const reducer = {
   auth: authReducer,
   project: projectReducer,
   projectStatus: projectStatusReducer,
   member: memberReducer,
+  projectMember: projectMemberRuducer,
 };
 
 const Store =

@@ -4,32 +4,88 @@ import { Input, Button, Progress, Table, Form, Select, DatePicker, Popconfirm } 
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
+import { ProjectService } from '../../service/projectService';
+import type { ProjectMemberResponse } from '../../api/projectMemberAPI';
+import { ProjectMemberService } from '../../service/projectMemberService';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/Store';
 
 interface ProjectDetailProps {
   isOpen: boolean;
   onClose: () => void;
-}
-interface Member {
-  key: string;
-  order: number;
-  memberName: string;
-  projectRole: string;
-  startDate: string | null;
-  endDate: string | null;
-  isCurrent: 'IsA' | 'NotA';
+  currentProjectId: number;
 }
 
-const mockMembers: Member[] = [
-  { key: '1', order: 1, memberName: 'Super Admin', projectRole: 'Project Manager', startDate: '2024-09-03', endDate: '2025-11-01', isCurrent: 'IsA' },
-  { key: '2', order: 2, memberName: 'PhanVanHung', projectRole: 'Chief Accountant', startDate: '2024-11-01', endDate: '2024-11-21', isCurrent: 'IsA' },
-  { key: '3', order: 3, memberName: '', projectRole: '', startDate: null, endDate: null, isCurrent: 'NotA' },
-];
+interface ProjectDetail {
+  projectId: number;
+  projectName: string;
+  expectedStartDate: string;
+  expectedEndDate: string;
+  projectStatusId: number;
+  // priority: string;
+  // skill: string;
+  projectLeadName: string;
+  workProgress: number;
+  members: ProjectMemberResponse[];
+}
 
-const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
+const viewData: ProjectDetail = {
+  projectId: 0,
+  projectName: '',
+  expectedStartDate: '',
+  expectedEndDate: '',
+  projectStatusId: 1,
+  // priority: '',
+  // skill: '',
+  projectLeadName: '',
+  workProgress: 0,
+  members: [],
+};
+
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose, currentProjectId }) => {
 
   const [isEditMemberOpen, setIsEditMemberOpen] = useState(false);
-  const [dataSource, setDataSource] = useState<Member[]>(mockMembers);
+  const [projectMemberData, setProjectMemberData] = useState<ProjectMemberResponse[]>([]);
+  const [projectData, setProjectData] = useState<ProjectDetail>(viewData);
+  // const { selectedProject } = useSelector((state: RootState) => state.project);
+  const { projects } = useSelector((state: RootState) => state.project);
   const { Option } = Select;
+
+  const loadProjectDetail = async (projectId: number) => {
+    try {
+      const result = await ProjectService.getProjectById(projectId);
+      const projectMemberResult = await ProjectMemberService.getAllMembersByProjectId(projectId);
+      if (result.success && result.data) {
+        const newData: ProjectDetail = {
+          projectId: result.data?.projectId || 0,
+          projectName: result.data?.projectName || '',
+          expectedStartDate: result.data?.expectedStartDate || '',
+          expectedEndDate: result.data?.expectedEndDate || '',
+          projectStatusId: result.data?.projectStatusId || 0,
+          // priority: result.data?.priority || '-',
+          // skill: result.data?.skill || '-',
+          projectLeadName: result.data?.projectLeadName || '',
+          workProgress: result.data?.workProgress || 0,
+          members: projectMemberResult.data || [],
+        };
+        setProjectData(newData);
+        // Populate projectMemberData with order numbers
+        const editMember = (projectMemberResult.data || []).map((member) => ({
+          ...member,
+        }));
+        setProjectMemberData(editMember);
+        console.log('Project details loaded:', result.data, projectMemberResult);
+      }
+    } catch (error) {
+      console.error('Error loading project detail:', error);
+    }
+  };
+
+  React.useEffect(() => {
+    if (isOpen && currentProjectId) {
+      loadProjectDetail(currentProjectId);
+    }
+  }, [isOpen, currentProjectId]);
 
   if (!isOpen) return null;
 
@@ -57,6 +113,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
               <Input
                 type="text"
                 name="projectName"
+                value={projectData.projectName}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
@@ -67,6 +124,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
               <Input
                 type="text"
                 name="time"
+                value={`${projectData.expectedStartDate ? projectData.expectedStartDate.split('T')[0] : ''}    -->   ${projectData.expectedEndDate ? projectData.expectedEndDate.split('T')[0] : ''}`}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
@@ -77,6 +135,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
               <Input
                 type="text"
                 name="status"
+                // value={selectedProject.projectStatusName || 'N/A'}
+                value={projects.find(project => project.projectStatusId === projectData.projectStatusId)?.projectStatusName || '-'}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
@@ -87,16 +147,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
               <Input
                 type="text"
                 name="priority"
+                value={'None'}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
             </Form.Item>
-
             <Form.Item className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
               Skill{' '}
               <Input
                 type="text"
                 name="skill"
+                value={'None'}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
@@ -107,6 +168,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
               <Input
                 type="text"
                 name="projectLeadName"
+                value={projectData.projectLeadName}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
                 disabled
               />
@@ -115,26 +177,29 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
             <Form.Item className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
               Progress{' '}
               <Progress
-                percent={80.56}
+                percent={projectData.workProgress}
                 status="active"           // hiệu ứng sóng nhẹ
                 //status="success"          // nếu đạt 100%
                 strokeColor="#52c41a"
                 strokeLinecap="round"
                 showInfo={true}               // bắt buộc để hiển thị %
-                // format={(percent) => `${percent.toFixed(2)}%`}
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
               />
             </Form.Item>
 
-            <Form.Item className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
+            <Form.Item className={`block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left ${isEditMemberOpen ? 'hidden' : ''}`}>
               Member{' '}
               <div className="flex items-center gap-2">
-                <Input
-                  type="text"
-                  name="member"
+                <Select
+                  value={projectData.members.map(member => member.memberId)}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 mt-1"
-                  disabled
-                />
+                >
+                  {projectData.members.map(member => (
+                    <Select.Option key = {member.memberId} value = {member.memberId} >
+                      {member.memberFullName}
+                    </Select.Option>
+                  ))}
+                </Select>
                 <Button
                   onClick={() => setIsEditMemberOpen(true)}
                   className="!bg-green-500 hover:!bg-green-600 text-white rounded-xl px-4 py-5 transition hover:!text-white" >
@@ -180,42 +245,40 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
 
               {/* Nội dung table editable */}
               {(() => {
-                const handleChange = (value: any, key: string, dataIndex: keyof Member) => {
-                  setDataSource(prev =>
-                    prev.map(item =>
-                      item.key === key ? { ...item, [dataIndex]: value } : item
-                    )
-                  );
-                };
+                // const handleChange = (value: string | null, key: number, dataIndex: keyof ProjectMemberResponse) => {
+                //   setProjectMemberData(prev =>
+                //     prev.map(item =>
+                //       item.mediateProjectMemberId === key ? { ...item, [dataIndex]: value } : item
+                //     )
+                //   );
+                // };
 
-                const handleDateChange = (date: any, dateString: string, key: string, field: 'startDate' | 'endDate') => {
-                  handleChange(dateString, key, field);
-                };
+                // const handleDateChange = (_date: dayjs.Dayjs | null, dateString: string, key: number, field: 'startDate' | 'endDate') => {
+                //   handleChange(dateString, key, field);
+                // };
 
-                const handleAdd = () => {
-                  const newMember: Member = {
-                    key: Date.now().toString(),
-                    order: dataSource.length + 1,
-                    memberName: '',
-                    projectRole: '',
-                    startDate: null,
-                    endDate: null,
-                    isCurrent: 'NotA',
-                  };
-                  setDataSource([...dataSource, newMember]);
-                };
+                // const handleAdd = () => {
+                //   const newMember: CreateMemberRequest = {
+                //     memberId: 0,
+                //     roleId: 0,
+                //     startDate: '',
+                //     endDate: '',
+                //     isCurrent: false,
+                //   };
+                //   setProjectMemberData([...projectMemberData, newMember]);
+                // };
 
-                const handleDelete = (key: string) => {
-                  setDataSource(prev => prev.filter(item => item.key !== key));
-                };
+                // const handleDelete = (key: string) => {
+                //   setDataSource(prev => prev.filter(item => item.key !== key));
+                // };
 
-                const columns: ColumnsType<Member> = [
+                const columns: ColumnsType<ProjectMemberResponse> = [
                   {
                     title: 'Order',
                     dataIndex: 'order',
                     width: 60,
                     align: 'center',
-                    render: (_, record) => record.order,
+                    render: (_, __, index) => index + 1,
                   },
                   {
                     title: 'Member Name',
@@ -224,8 +287,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     align: 'center',
                     render: (_, record) => (
                       <Select
-                        value={record.memberName || undefined}
-                        onChange={val => handleChange(val, record.key, 'memberName')}
+                        value={record.memberFullName || undefined}
+                        // onChange={val => handleChange(val, record.mediateProjectMemberId, 'memberName')}
                         placeholder="Choose member name"
                         style={{ width: '100%' }}
                         allowClear
@@ -243,8 +306,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     align: 'center',
                     render: (_, record) => (
                       <Select
-                        value={record.projectRole || undefined}
-                        onChange={val => handleChange(val, record.key, 'projectRole')}
+                        value={record.roleName || undefined}
+                        // onChange={val => handleChange(val, record.key, 'projectRole')}
                         placeholder="Choose project role"
                         style={{ width: '100%' }}
                       >
@@ -262,7 +325,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     render: (_, record) => (
                       <DatePicker
                         value={record.startDate ? dayjs(record.startDate) : null}
-                        onChange={(date, dateString) => handleDateChange(date, dateString as string, record.key, 'startDate')}
+                        // onChange={(date, dateString) => handleDateChange(date, dateString as string, record.key, 'startDate')}
                         format="YYYY-MM-DD"
                         style={{ width: '100%' }}
                       />
@@ -276,7 +339,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     render: (_, record) => (
                       <DatePicker
                         value={record.endDate ? dayjs(record.endDate) : null}
-                        onChange={(date, dateString) => handleDateChange(date, dateString as string, record.key, 'endDate')}
+                        // onChange={(date, dateString) => handleDateChange(date, dateString as string, record.key, 'endDate')}
                         format="YYYY-MM-DD"
                         style={{ width: '100%' }}
                       />
@@ -287,14 +350,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     dataIndex: 'isCurrent',
                     width: 140,
                     align: 'center',
-                    render: (_, record) => (
+                    render: (isCurrent: boolean) => (
                       <Select
-                        value={record.isCurrent}
-                        onChange={val => handleChange(val, record.key, 'isCurrent')}
+                        value={isCurrent? "Is A Member": "Not A Member"}
+                        // onChange={val => handleChange(val, record.key, 'isCurrent')}
                         style={{ width: '100%' }}
                       >
-                        <Option value="IsA">Is Member</Option>
-                        <Option value="NotA">Not A Member</Option>
+                        {isCurrent? "Is A Member": "Not A Member"}
+                        <Option value="1">Is A Member</Option>
+                        <Option value="0">Not A Member</Option>
                       </Select>
                     ),
                   },
@@ -303,10 +367,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
                     key: 'delete',
                     width: 60,
                     align: 'center',
-                    render: (_, record) => (
+                    render: () => (
                       <Popconfirm
                         title="Delete this member?"
-                        onConfirm={() => handleDelete(record.key)}
+                        // onConfirm={() => handleDelete(record.key)}
                         okText="Yes"
                         cancelText="No"
                       >
@@ -324,7 +388,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
 
                     <Table
                       columns={columns}
-                      dataSource={dataSource}
+                      dataSource ={ projectMemberData}
                       pagination={false}
                       bordered
                       size="middle"
@@ -333,7 +397,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ isOpen, onClose }) => {
 
                     <Button
                       icon={<PlusOutlined />}
-                      onClick={handleAdd}
+                      // onClick={handleAdd}
                       className=" w-[150px] h-10 ml-auto text-white hover:!text-white mt-2 items-center justify-center bg-green-500 hover:!bg-green-600"
                     >
                       Add Member

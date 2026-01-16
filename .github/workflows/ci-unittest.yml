@@ -61,14 +61,14 @@ jobs:
           json-summary-path: ./coverage/coverage-summary.json
           json-final-path: ./coverage/coverage-final.json
 
-      # 7. (Tùy chọn) Scan SonarCloud để theo dõi chất lượng code & coverage
-      - name: SonarCloud Scan
-        if: always()
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.organization=vnhan111-1
-            -Dsonar.projectKey=vnhan111_wbs_test
-            -Dsonar.javascript.lcov.reportPaths=./frontend-react/coverage/lcov.info
+      # # 7. (Tùy chọn) Scan SonarCloud để theo dõi chất lượng code & coverage
+      # - name: SonarCloud Scan
+      #   if: always()
+      #   uses: SonarSource/sonarqube-scan-action@v4
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   with:
+      #     args: >
+      #       -Dsonar.organization=vnhan111-1
+      #       -Dsonar.projectKey=vnhan111_wbs_test
+      #       -Dsonar.javascript.lcov.reportPaths=./frontend-react/coverage/lcov.info

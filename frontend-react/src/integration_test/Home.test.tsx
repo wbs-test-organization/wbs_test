@@ -131,7 +131,7 @@ describe('Home Component - Project Management', () => {
   // 7. Mở modal Edit + load data
   it('opens Edit modal and loads data', async () => {
     renderHome();
-    const editBtns = await screen.findAllByTitle('Edit', { timeout: 5000 });
+    const editBtns = await screen.findAllByTitle('Edit');
     await user.click(editBtns[0]);
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: /Edit Project/i })).toBeInTheDocument();
@@ -142,7 +142,7 @@ describe('Home Component - Project Management', () => {
   // 8. Đóng modal Edit bằng Cancel
   it('closes Edit modal by Cancel', async () => {
     renderHome();
-    const editBtns = await screen.findAllByTitle('Edit', { timeout: 5000 });
+    const editBtns = await screen.findAllByTitle('Edit');
     await user.click(editBtns[0]);
     await screen.findByRole('heading', { name: /Edit Project/i });
     await user.click(screen.getByRole('button', { name: /Cancel/i }));
@@ -154,7 +154,7 @@ describe('Home Component - Project Management', () => {
   // 9. Cập nhật project thành công
   it('updates project successfully', async () => {
     renderHome();
-    const editBtns = await screen.findAllByTitle('Edit', { timeout: 5000 });
+    const editBtns = await screen.findAllByTitle('Edit');
     await user.click(editBtns[0]);
     const nameInput = await screen.findByDisplayValue('Project Alpha');
     await user.clear(nameInput);
@@ -169,7 +169,7 @@ describe('Home Component - Project Management', () => {
   it('deletes project successfully', async () => {
     mockConfirm.mockReturnValue(true);
     renderHome();
-    const deleteBtns = await screen.findAllByTitle('Delete', { timeout: 5000 });
+    const deleteBtns = await screen.findAllByTitle('Delete');
     await user.click(deleteBtns[0]);
     await waitFor(() => expect(message.success).toHaveBeenCalledWith('Project deleted successfully!'), { timeout: 5000 });
   });

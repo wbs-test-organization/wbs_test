@@ -152,12 +152,18 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:3000",
-                "http://localhost:5173"
+                "https://localhost:3000"
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
     });
+});
+
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect; 
+    options.HttpsPort = 7075;  // Port HTTPS bạn dùng ở trên
 });
 
 var app = builder.Build();
@@ -173,9 +179,14 @@ var app = builder.Build();
     //         c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectManage API v1");
     //     });
     // }
+
+if(!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+}
 app.UseSwagger();
 app.UseSwaggerUI();
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 app.UseAuthentication();
 app.UseAuthorization();

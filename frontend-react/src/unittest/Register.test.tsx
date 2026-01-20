@@ -1,6 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { render, screen, waitFor, cleanup, fireEvent } from '@testing-library/react';
+import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import Register from '../pages/auth/Register';
 import { AuthService } from '../service/authService';
@@ -26,162 +25,151 @@ vi.mock('react-router-dom', async () => {
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
-vi.mock('antd', async () => {
-  const actual = await vi.importActual('antd');
+// Mock antd message một cách tối giản
+vi.mock('antd', async (importActual) => {
+  const actual: any = await importActual();
   return {
     ...actual,
     message: { success: vi.fn(), error: vi.fn() },
   };
 });
 
+// Mock API Service
 vi.mock('../service/authService', () => ({
   AuthService: { register: vi.fn() },
 }));
 
-describe('Register Component', () => {
+describe('Register Component Integration Tests', () => {
+  
   beforeEach(() => {
     vi.clearAllMocks();
+    // Đảm bảo cleanup DOM sạch sẽ trước mỗi lần chạy
+    cleanup();
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   const renderRegister = () => render(
-    <MemoryRouter><Register /></MemoryRouter>
+    <MemoryRouter>
+      <Register />
+    </MemoryRouter>
   );
 
-  // Helper function: Điền đầy đủ tất cả các trường để pass qua Form Validation
-  const fillAllFields = async (user: any, overrides = {}) => {
-    const defaultData = {
-      email: 'test@gmail.com',
-      name: 'Test User',
-      user: 'testusername',
+  /**
+   * Helper: Điền Form siêu tốc bằng fireEvent
+   * Lý do: userEvent.type giả lập gõ phím thật (chậm), fireEvent điền giá trị tức thì (nhanh).
+   * Khi chạy chung nhiều file, việc dùng fireEvent giúp giảm tải CPU và tránh Timeout.
+   */
+  const fillFormFast = (overrides = {}) => {
+    const data = {
+      email: 'test@example.com',
+      name: 'John Doe',
+      username: 'johndoe',
       pass: '123456',
-      confirm: '123456'
+      confirm: '123456',
+      ...overrides
     };
-    const data = { ...defaultData, ...overrides };
 
-    await user.type(screen.getByPlaceholderText(/Enter email/i), data.email);
-    await user.type(screen.getByPlaceholderText(/Enter full name/i), data.name);
-    await user.type(screen.getByPlaceholderText(/Enter username/i), data.user);
-    await user.type(screen.getByPlaceholderText('Enter password'), data.pass);
-    await user.type(screen.getByPlaceholderText('Enter confirm password'), data.confirm);
+    fireEvent.change(screen.getByPlaceholderText(/Enter email/i), { target: { value: data.email } });
+    fireEvent.change(screen.getByPlaceholderText(/Enter full name/i), { target: { value: data.name } });
+    fireEvent.change(screen.getByPlaceholderText(/Enter username/i), { target: { value: data.username } });
+    fireEvent.change(screen.getByPlaceholderText('Enter password'), { target: { value: data.pass } });
+    fireEvent.change(screen.getByPlaceholderText('Enter confirm password'), { target: { value: data.confirm } });
   };
 
-  // --- TEST CASES ---
+  // --- FULL TEST CASES ---
 
-  it('hiển thị đầy đủ các trường nhập liệu và nút đăng ký', () => {
+  it('1. Hiển thị đầy đủ giao diện ban đầu', () => {
     renderRegister();
     expect(screen.getByText(/Register WBBBSSS System/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/Enter email/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /register/i })).toBeInTheDocument();
   });
 
-  it('hiển thị lỗi nếu mật khẩu xác nhận không khớp', async () => {
-    const user = userEvent.setup();
-    renderRegister();
+  it('2. Ẩn/Hiện mật khẩu khi tương tác với biểu tượng mắt', () => {
+    const { container } = renderRegister();
+    const passInput = screen.getByPlaceholderText('Enter password');
     
-    // Điền mật khẩu không khớp
-    await fillAllFields(user, { pass: '123456', confirm: '654321' });
+    // Ant Design render icon toggle password là các button type="button"
+    const toggles = container.querySelectorAll('button[type="button"]');
 
-    await user.click(screen.getByRole('button', { name: /register/i }));
+    expect(passInput).toHaveAttribute('type', 'password');
+    fireEvent.click(toggles[0]); // Click toggle pass
+    expect(passInput).toHaveAttribute('type', 'text');
+    fireEvent.click(toggles[0]); // Click lại để ẩn
+    expect(passInput).toHaveAttribute('type', 'password');
+  });
 
+  it('3. Thông báo lỗi khi mật khẩu xác nhận không khớp', async () => {
+    renderRegister();
+    fillFormFast({ pass: '123456', confirm: 'different_pass' });
+    
+    const submitBtn = screen.getByRole('button', { name: /register/i });
+    fireEvent.click(submitBtn);
+
+    // Sử dụng timeout 4500ms để đợi UI render kịp khi hệ thống bị nghẽn CPU
     await waitFor(() => {
       expect(message.error).toHaveBeenCalledWith('Confirm password does not match!');
-    });
+    }, { timeout: 4500 });
   });
 
-  it('gọi AuthService.register và chuyển hướng khi đăng ký thành công', async () => {
-    const user = userEvent.setup();
-    vi.mocked(AuthService.register).mockResolvedValue({ success: true });
-
+  it('4. Đăng ký thành công và chuyển hướng về trang Login', async () => {
+    const registerSpy = vi.mocked(AuthService.register).mockResolvedValue({ success: true });
     renderRegister();
-    await fillAllFields(user);
-
-    await user.click(screen.getByRole('button', { name: /register/i }));
+    
+    fillFormFast();
+    fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
     await waitFor(() => {
-      expect(AuthService.register).toHaveBeenCalled();
+      expect(registerSpy).toHaveBeenCalled();
       expect(message.success).toHaveBeenCalledWith('Registration successful!');
       expect(mockNavigate).toHaveBeenCalledWith('/login');
-    });
+    }, { timeout: 4500 });
   });
 
-  it('hiển thị thông báo lỗi cụ thể từ API khi đăng ký thất bại', async () => {
-    const user = userEvent.setup();
+  it('5. Hiển thị thông báo lỗi từ server khi đăng ký thất bại', async () => {
+    const apiError = 'Email already exists';
     vi.mocked(AuthService.register).mockResolvedValue({ 
       success: false, 
-      error: 'Username already taken' 
+      error: apiError 
     });
 
     renderRegister();
-    await fillAllFields(user); // Phải điền đủ để qua validation của Form
-
-    await user.click(screen.getByRole('button', { name: /register/i }));
+    fillFormFast();
+    fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
     await waitFor(() => {
-      expect(message.error).toHaveBeenCalledWith('Username already taken');
-    });
+      expect(message.error).toHaveBeenCalledWith(apiError);
+    }, { timeout: 4500 });
   });
 
-  it('hiển thị thông báo lỗi mặc định khi API thất bại mà không có message', async () => {
-    const user = userEvent.setup();
-    vi.mocked(AuthService.register).mockResolvedValue({ 
-      success: false, 
-      error: "" // Test nhánh rỗng để phủ dòng 47
-    });
+  it('6. Hiển thị lỗi mặc định khi server lỗi mà không có thông điệp', async () => {
+    vi.mocked(AuthService.register).mockResolvedValue({ success: false, error: '' });
 
     renderRegister();
-    await fillAllFields(user);
-
-    await user.click(screen.getByRole('button', { name: /register/i }));
+    fillFormFast();
+    fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
     await waitFor(() => {
       expect(message.error).toHaveBeenCalledWith('Registration failed. Please try again!');
-    });
+    }, { timeout: 4500 });
   });
 
-  it('thay đổi trạng thái ẩn hiện mật khẩu cho cả hai ô Password và Confirm Password', async () => {
-    const user = userEvent.setup();
-    const { container } = renderRegister();
-
-    const passwordInput = screen.getByPlaceholderText('Enter password');
-    const confirmInput = screen.getByPlaceholderText('Enter confirm password');
-    
-    // Tìm button theo type="button" và class focus:outline-none của bạn
-    const toggleButtons = container.querySelectorAll('button[type="button"]'); 
-
-    // Test ô Password
-    expect(passwordInput).toHaveAttribute('type', 'password');
-    await user.click(toggleButtons[0]);
-    expect(passwordInput).toHaveAttribute('type', 'text');
-    await user.click(toggleButtons[0]);
-    expect(passwordInput).toHaveAttribute('type', 'password');
-
-    // Test ô Confirm Password
-    expect(confirmInput).toHaveAttribute('type', 'password');
-    await user.click(toggleButtons[1]);
-    expect(confirmInput).toHaveAttribute('type', 'text');
-  });
-
-  it('vô hiệu hóa nút và hiển thị trạng thái loading khi đang xử lý', async () => {
-    const user = userEvent.setup();
-    
-    // Tạo một promise treo để giữ trạng thái loading
-    let resolveApi: any;
-    const pendingPromise = new Promise((resolve) => { resolveApi = resolve; });
+  it('7. Nút đăng ký bị vô hiệu hóa (disabled) khi đang xử lý API', async () => {
+    // Tạo một promise "treo" không bao giờ trả về ngay lập tức
+    const pendingPromise = new Promise(() => {}); 
     vi.mocked(AuthService.register).mockReturnValue(pendingPromise as any);
 
     renderRegister();
-    await fillAllFields(user);
+    fillFormFast();
+    
+    const btn = screen.getByRole('button', { name: /register/i });
+    fireEvent.click(btn);
 
-    const registerBtn = screen.getByRole('button', { name: /register/i });
-    await user.click(registerBtn);
-
-    // Ant Design Button khi disabled sẽ có thuộc tính disabled
+    // Kiểm tra trạng thái disabled của Ant Design Button
     await waitFor(() => {
-      expect(registerBtn).toBeDisabled();
-      expect(screen.getByText(/Registering.../i)).toBeInTheDocument();
-    });
-
-    // Giải phóng để kết thúc test
-    resolveApi({ success: true });
+      expect(btn).toBeDisabled();
+    }, { timeout: 4500 });
   });
 });

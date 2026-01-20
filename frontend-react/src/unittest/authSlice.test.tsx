@@ -52,6 +52,7 @@ describe('authSlice reducer', () => {
     };
 
     beforeEach(() => {
+        vi.resetModules();
         vi.clearAllMocks();
         localStorageMock.clear();
     });
@@ -206,5 +207,58 @@ describe('authSlice reducer', () => {
         // In real test, you'd import the reducer again or mock localStorage before import
         // Here we simulate:
         expect(true).toBe(true); // Placeholder - in practice, test initial state when loaded
+    });
+    describe('initial state from localStorage ', () => {
+        beforeEach(() => {
+            vi.resetModules(); // Xóa cache để initialState trong file slice chạy lại
+            vi.clearAllMocks();
+        });
+
+        it('should load token and member from localStorage on init', async () => {
+            // 1. Giả lập localStorage có dữ liệu
+            localStorageMock.getItem.mockImplementation((key) => {
+                if (key === 'token') return 'saved-token';
+                if (key === 'member') return JSON.stringify(mockMember);
+                return null;
+            });
+
+            // 2. Import động để trigger loadFromStorage()
+            const { default: freshAuthReducer } = await import('../redux/slice/authSlice');
+
+            const state = freshAuthReducer(undefined, { type: '@@INIT' });
+
+            expect(state.token).toBe('saved-token');
+            expect(state.member).toEqual(mockMember);
+            expect(state.isAuthenticated).toBe(true);
+        });
+
+        it('should handle JSON.parse error in loadFromStorage ', async () => {
+            // 1. Giả lập dữ liệu lỗi để JSON.parse bị crash
+            localStorageMock.getItem.mockImplementation((key) => {
+                if (key === 'token') return 'saved-token';
+                if (key === 'member') return 'invalid-json-{'; // Gây lỗi parse
+                return null;
+            });
+
+            const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+            // 2. Import động
+            const { default: freshAuthReducer } = await import('../redux/slice/authSlice');
+            
+            const state = freshAuthReducer(undefined, { type: '@@INIT' });
+
+            // 3. Kiểm tra console.error có được gọi không (Dòng 27)
+            expect(consoleSpy).toHaveBeenCalledWith(
+                'Error loading from localStorage:',
+                expect.any(Error)
+            );
+
+            // 4. Kiểm tra giá trị trả về từ catch block (Dòng 29)
+            expect(state.token).toBeNull();
+            expect(state.member).toBeNull();
+            expect(state.isAuthenticated).toBe(false);
+
+            consoleSpy.mockRestore();
+        });
     });
 });

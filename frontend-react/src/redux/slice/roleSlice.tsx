@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { RoleProjectMemberResponse } from "../../api/projectRoleAPI";
 
-interface RoleState {
+export interface RoleState {
     roles: RoleProjectMemberResponse[];
     isLoading : boolean;
     error: string | null;

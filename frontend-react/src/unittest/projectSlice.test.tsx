@@ -10,7 +10,8 @@ import projectReducer, {
     clearError,
     clearSelectedProject,
     reset,
-    type ProjectState
+    type ProjectState,
+    Project
 } from '../redux/slice/projectSlice';
 
 const mockProject = {
@@ -42,7 +43,7 @@ const mockProject2 = {
 };
 
 const initialState: ProjectState = {
-    projects: [],
+    projects: [] ,
     selectedProject: null,
     isLoading: false,
     error: null,
@@ -358,7 +359,7 @@ describe('projectSlice', () => {
         });
 
         it('should handle edge case: update then remove same project', () => {
-            let state = { ...initialState, projects: [mockProject, mockProject2] };
+            let state = { ...initialState, projects: [mockProject, mockProject2] as Project[]};
 
             const updated = { ...mockProject, projectName: "Updated" };
             state = projectReducer(state, updateProject(updated));

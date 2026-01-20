@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye as EyeIcon, EyeOff as EyeOffIcon } from 'lucide-react';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Card, message } from 'antd';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { AuthService } from '../../service/authService';
@@ -66,7 +66,7 @@ const ResetPassword: React.FC = () => {
                                 placeholder="Enter password"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                                 iconRender={(visible) => 
-                                    visible ? <EyeOffIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />
+                                    visible ? <EyeOutlined className="h-5 w-5" /> : <EyeInvisibleOutlined className="h-5 w-5" />
                                 }
                                 visibilityToggle={{
                                     visible: passwordVisible,
@@ -99,7 +99,7 @@ const ResetPassword: React.FC = () => {
                                 placeholder="Enter confirm password"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                                 iconRender={(visible) => 
-                                    visible ? <EyeOffIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />
+                                    visible ? <EyeOutlined className="h-5 w-5" /> : <EyeInvisibleOutlined className="h-5 w-5" />
                                 }
                                 visibilityToggle={{
                                     visible: confirmPasswordVisible,

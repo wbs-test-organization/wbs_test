@@ -1,4 +1,4 @@
-name: CI Backend + E2E
+name: CI E2E playwright
 on:
   push:
     branches: [ main, playwright ]

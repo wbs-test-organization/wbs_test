@@ -100,6 +100,46 @@ namespace WBS_backend.Tests.Services
             () => _service.AddMemberForProjectId(999, request));
                 }
 
+        [Fact(DisplayName = "AddMemberForProjectId → Khi member không tồn tại → Ném KeyNotFoundException")]
+        public async Task AddMember_WhenMemberNotExists_Should_ThrowKeyNotFoundException()
+        {
+            var request = new ProjectMemberRequest
+            {
+                MemberId = 999,
+                RoleId = 1,
+                StartDate = DateTime.Today,
+                IsCurrent = true
+            };
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _service.AddMemberForProjectId(3, request));
+        }
+
+        [Fact(DisplayName = "AddMemberForProjectId → Khi member đã tồn tại trong project → Ném KeyNotFoundException")]
+        public async Task AddMember_WhenDuplicate_Should_ThrowKeyNotFoundException()
+        {
+            _context.ProjectMembers.Add(new ProjectMember
+            {
+                ProjectId = 3,
+                MemberId = 1,
+                RoleId = 1,
+                StartDate = DateTime.Today,
+                IsCurrent = true
+            });
+            await _context.SaveChangesAsync();
+
+            var request = new ProjectMemberRequest
+            {
+                MemberId = 1,
+                RoleId = 1,
+                StartDate = DateTime.Today,
+                IsCurrent = true
+            };
+
+            await Assert.ThrowsAsync<KeyNotFoundException>(
+                () => _service.AddMemberForProjectId(3, request));
+        }
+
         public void Dispose()
         {
             _context.Dispose();

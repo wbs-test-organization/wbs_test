@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="65d7da9e-9818-4b1b-bda4-04b23e13b137" name="03854@NGUYENVIETTU 2026-01-20 15:26:11" runUser="NGUYENVIETTU\03854" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-01-20T15:26:11.2855521+07:00" queuing="2026-01-20T15:26:11.2855523+07:00" start="2026-01-20T15:26:10.4921025+07:00" finish="2026-01-20T15:26:17.6893627+07:00" />
+  <TestSettings name="default" id="338e604f-b292-4ea6-8d17-5ae7f9829b6a">
+    <Deployment runDeploymentRoot="03854_NGUYENVIETTU_2026-01-20_15_26_11" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="06cd816a-206e-42d4-8d5d-bd11b7420a69" testId="a97903cd-300f-f821-701a-b12ec49bf1f3" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsInternalServerError_WhenExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0026969" startTime="2026-01-20T15:26:11.3035550+07:00" endTime="2026-01-20T15:26:11.3060227+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06cd816a-206e-42d4-8d5d-bd11b7420a69" />
+    <UnitTestResult executionId="35fcaf11-2fc8-424c-a47a-c53249daaac2" testId="02c36578-0d93-5a26-9532-42ea093a5d20" testName="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests.GetProjectStatusById_Should_ReturnOk" computerName="NGUYENVIETTU" duration="00:00:01.1414305" startTime="2026-01-20T15:26:11.1668156+07:00" endTime="2026-01-20T15:26:12.2825009+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35fcaf11-2fc8-424c-a47a-c53249daaac2" />
+    <UnitTestResult executionId="38767ec8-4c2c-4e74-86f8-dfd3073650ac" testId="2088a744-adcf-1c80-7e09-a4e1596eecac" testName="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.UpdateProject_Should_returnOk" computerName="NGUYENVIETTU" duration="00:00:00.0762886" startTime="2026-01-20T15:26:12.3524250+07:00" endTime="2026-01-20T15:26:12.4291202+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38767ec8-4c2c-4e74-86f8-dfd3073650ac" />
+    <UnitTestResult executionId="dc50f3e2-c54c-48cb-a764-4a3884c4bced" testId="2c06b6b1-90f4-e3f1-2747-8506f460cd17" testName="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsOkResult_WhenVerificationSuccessful" computerName="NGUYENVIETTU" duration="00:00:00.1134051" startTime="2026-01-20T15:26:11.1669043+07:00" endTime="2026-01-20T15:26:11.2477829+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc50f3e2-c54c-48cb-a764-4a3884c4bced" />
+    <UnitTestResult executionId="23815f11-0877-439f-acc2-ac30d631db39" testId="020757d2-f532-2458-3de1-636884995586" testName="WBS_backend.Tests.Services.AuthServiceTests.LoginAsync_Should_Return_Failed_When_User_NotFound_Or_WrongPassword" computerName="NGUYENVIETTU" duration="00:00:00.2442150" startTime="2026-01-20T15:26:12.9827993+07:00" endTime="2026-01-20T15:26:13.2270549+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23815f11-0877-439f-acc2-ac30d631db39" />
+    <UnitTestResult executionId="f76394b9-502d-4ef7-bd34-c4fc10cec223" testId="8dcee7d9-4fe4-c42d-8878-111e2277cfe9" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsInternalServerError_WhenExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0036018" startTime="2026-01-20T15:26:11.2613126+07:00" endTime="2026-01-20T15:26:11.2615497+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f76394b9-502d-4ef7-bd34-c4fc10cec223" />
+    <UnitTestResult executionId="c35dfda3-08b7-4f27-83a2-332d91720c9d" testId="f61d70fa-4538-ba3a-09d2-837f36dfdddf" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsUnauthorized_WhenCredentialsAreInvalid" computerName="NGUYENVIETTU" duration="00:00:00.0028068" startTime="2026-01-20T15:26:11.2674583+07:00" endTime="2026-01-20T15:26:11.2677665+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c35dfda3-08b7-4f27-83a2-332d91720c9d" />
+    <UnitTestResult executionId="a640c2a7-ffe9-4d09-9c29-7bedec6c4afd" testId="e78cc352-945b-6500-c471-c62225247fa7" testName="WBS_backend.Tests.Entities.ProjectStatusTests.Properties_Should_Be_Settable" computerName="NGUYENVIETTU" duration="00:00:00.0086535" startTime="2026-01-20T15:26:11.2005495+07:00" endTime="2026-01-20T15:26:11.2007371+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a640c2a7-ffe9-4d09-9c29-7bedec6c4afd" />
+    <UnitTestResult executionId="fda91cde-6d0c-41d0-982b-262741f52083" testId="0f6c3f5c-87d5-ff27-b7e3-b47c2a4422e1" testName="WBS_backend.Tests.Services.AuthServiceTests.RegisterAsync_Should_Create_User_When_Email_And_Login_Not_Exist" computerName="NGUYENVIETTU" duration="00:00:04.3831599" startTime="2026-01-20T15:26:13.2294950+07:00" endTime="2026-01-20T15:26:17.6120307+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fda91cde-6d0c-41d0-982b-262741f52083" />
+    <UnitTestResult executionId="e9d12282-5f49-40fb-8772-a670943b501f" testId="405ac065-a5a4-f937-8d91-7d249fda68f1" testName="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Throw_When_Project_Is_Deleted" computerName="NGUYENVIETTU" duration="00:00:00.0032702" startTime="2026-01-20T15:26:12.1465950+07:00" endTime="2026-01-20T15:26:12.1497909+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e9d12282-5f49-40fb-8772-a670943b501f" />
+    <UnitTestResult executionId="36ea51c6-9e00-4777-8a36-e6ba8da08883" testId="ea56f888-62fb-0310-66b8-849b8b69d34e" testName="WBS_backend.Tests.Services.AuthServiceTests.VerifyEmailAsync_Should_Throw_When_Code_Invalid" computerName="NGUYENVIETTU" duration="00:00:00.3584135" startTime="2026-01-20T15:26:11.9775633+07:00" endTime="2026-01-20T15:26:12.3358857+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36ea51c6-9e00-4777-8a36-e6ba8da08883" />
+    <UnitTestResult executionId="365033ee-a755-4b65-b98e-f4ca3c0d87d3" testId="1e33b907-2bf9-1631-942e-020093d06501" testName="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0032877" startTime="2026-01-20T15:26:11.2680096+07:00" endTime="2026-01-20T15:26:11.2705652+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="365033ee-a755-4b65-b98e-f4ca3c0d87d3" />
+    <UnitTestResult executionId="7e6738c4-707b-4c87-bb14-c03117c5e17b" testId="543c4721-08c9-5124-e091-d37e8d0a3e26" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsBadRequest_WhenArgumentExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0016191" startTime="2026-01-20T15:26:11.3101495+07:00" endTime="2026-01-20T15:26:11.3102248+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e6738c4-707b-4c87-bb14-c03117c5e17b" />
+    <UnitTestResult executionId="0499ac32-0fc2-456f-abe2-6d34bd17e22f" testId="c5e52ba0-c008-85af-4da0-9b618353f915" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsNotFound_WhenProjectDoesNotExist" computerName="NGUYENVIETTU" duration="00:00:00.0017496" startTime="2026-01-20T15:26:11.3104480+07:00" endTime="2026-01-20T15:26:11.3119994+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0499ac32-0fc2-456f-abe2-6d34bd17e22f" />
+    <UnitTestResult executionId="64e2bf62-1116-4890-8db2-63981816566b" testId="0d1e3d10-8006-1dbb-7d22-f596c1c3bbbd" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0028725" startTime="2026-01-20T15:26:11.2769820+07:00" endTime="2026-01-20T15:26:11.2794706+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64e2bf62-1116-4890-8db2-63981816566b" />
+    <UnitTestResult executionId="f6e0ce44-16dc-472f-b5f1-ac551bae6dd4" testId="6cf95320-7367-62b8-ee9d-a05705e51def" testName="WBS_backend.Tests.Controllers.MemberControllerTests.GetMember_ReturnNotFound_WhenNoMember" computerName="NGUYENVIETTU" duration="00:00:00.0283168" startTime="2026-01-20T15:26:11.2199100+07:00" endTime="2026-01-20T15:26:11.2603530+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6e0ce44-16dc-472f-b5f1-ac551bae6dd4" />
+    <UnitTestResult executionId="78658745-2645-4fd3-9e63-4f6ca1cda5bf" testId="99f6c09a-a731-73ef-b936-fc8c92615356" testName="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.GetProjectById_Shold_ReturnOk" computerName="NGUYENVIETTU" duration="00:00:00.0672399" startTime="2026-01-20T15:26:12.2843760+07:00" endTime="2026-01-20T15:26:12.3521743+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="78658745-2645-4fd3-9e63-4f6ca1cda5bf" />
+    <UnitTestResult executionId="0d576f79-6f5f-4369-843a-e68520c2450f" testId="39cbc7a9-cdbc-f8dc-3175-ee8b0c41c6a0" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsOkResult_WhenDeleteSuccessful" computerName="NGUYENVIETTU" duration="00:00:00.0052175" startTime="2026-01-20T15:26:11.2602697+07:00" endTime="2026-01-20T15:26:11.2606634+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0d576f79-6f5f-4369-843a-e68520c2450f" />
+    <UnitTestResult executionId="065a4a86-6edd-47a8-94a5-59ec84cf976b" testId="1a743729-be94-247d-d50b-0305ef494e8b" testName="WBS_backend.Tests.Services.ProjectServiceTest.GetProjectByIdAsync_Should_Return_Null_When_Project_Deleted" computerName="NGUYENVIETTU" duration="00:00:00.1359819" startTime="2026-01-20T15:26:11.9022230+07:00" endTime="2026-01-20T15:26:12.0379537+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="065a4a86-6edd-47a8-94a5-59ec84cf976b" />
+    <UnitTestResult executionId="fabc1d2a-d16e-4c2b-b2ce-ef0693bfb26a" testId="265af35e-a94c-15dd-d2a0-52d66ad84a38" testName="WBS_backend.Tests.Controllers.ProjectMemberControllerTests.aaa" computerName="NGUYENVIETTU" duration="00:00:00.0806007" startTime="2026-01-20T15:26:11.1669208+07:00" endTime="2026-01-20T15:26:11.2196114+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fabc1d2a-d16e-4c2b-b2ce-ef0693bfb26a" />
+    <UnitTestResult executionId="0627accf-354f-4eeb-a9af-54124b6b1ae9" testId="02707802-7ddf-efa3-16c4-f678d77cc09e" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsNotFound_WhenProjectDoesNotExist" computerName="NGUYENVIETTU" duration="00:00:00.0036157" startTime="2026-01-20T15:26:11.2616700+07:00" endTime="2026-01-20T15:26:11.2643582+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0627accf-354f-4eeb-a9af-54124b6b1ae9" />
+    <UnitTestResult executionId="82d21ed3-9039-4267-9c83-852729809264" testId="06410898-c15a-2bf7-c4d3-e84b01780a72" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsOkResult_WhenProjectExists" computerName="NGUYENVIETTU" duration="00:00:00.0026763" startTime="2026-01-20T15:26:11.2846802+07:00" endTime="2026-01-20T15:26:11.2861479+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82d21ed3-9039-4267-9c83-852729809264" />
+    <UnitTestResult executionId="642d1ea6-2d4a-4302-ae52-1934fd0c0663" testId="65425977-274f-bf8a-4f5f-f4d45f1bee7b" testName="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_HandlesEmptyCode" computerName="NGUYENVIETTU" duration="00:00:00.0044523" startTime="2026-01-20T15:26:11.2797529+07:00" endTime="2026-01-20T15:26:11.2847284+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="642d1ea6-2d4a-4302-ae52-1934fd0c0663" />
+    <UnitTestResult executionId="da125bc3-54b0-4c54-8e56-012247646850" testId="dca5949d-3985-55e3-3683-de2aa6abff77" testName="WBS_backend.Tests.Entities.ProjectStatusTests.Constructor_Should_Set_Default_Values" computerName="NGUYENVIETTU" duration="00:00:00.0380560" startTime="2026-01-20T15:26:11.1669362+07:00" endTime="2026-01-20T15:26:11.1803310+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="da125bc3-54b0-4c54-8e56-012247646850" />
+    <UnitTestResult executionId="5af5bb26-ead7-464f-830e-79eb1649ac18" testId="ef4fd636-d1bf-de63-0bbf-5d3e6d936589" testName="WBS_backend.Tests.Services.ProjectServiceTest.DeleteProjectByIdAsync_Should_SoftDelete_And_Return_True" computerName="NGUYENVIETTU" duration="00:00:00.0035033" startTime="2026-01-20T15:26:12.1431370+07:00" endTime="2026-01-20T15:26:12.1463589+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5af5bb26-ead7-464f-830e-79eb1649ac18" />
+    <UnitTestResult executionId="8cb42ddb-2e2f-43af-a31a-99c5c5037c66" testId="03566927-398f-4e92-d513-6cc61d7b3e62" testName="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.DeleteProject_Should_ReturnOk" computerName="NGUYENVIETTU" duration="00:00:01.1384638" startTime="2026-01-20T15:26:11.1668509+07:00" endTime="2026-01-20T15:26:12.2825866+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8cb42ddb-2e2f-43af-a31a-99c5c5037c66" />
+    <UnitTestResult executionId="929eb803-c545-476a-913b-693c06a37ead" testId="771b2354-ffff-506d-6db1-be3c64d0ad6d" testName="WBS_backend.Tests.Services.JwtServiceTests.ValidateToken_Should_Return_Null_For_Invalid_Or_Empty_Token" computerName="NGUYENVIETTU" duration="00:00:00.0381559" startTime="2026-01-20T15:26:11.1639656+07:00" endTime="2026-01-20T15:26:11.1871577+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="929eb803-c545-476a-913b-693c06a37ead" />
+    <UnitTestResult executionId="8e3f9a4f-79bb-4007-8519-f748e84c1285" testId="1f0641db-6a9a-4bc4-80cd-888e3061f3a5" testName="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsInternalServerError_WhenExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0023241" startTime="2026-01-20T15:26:11.2849874+07:00" endTime="2026-01-20T15:26:11.2864378+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e3f9a4f-79bb-4007-8519-f748e84c1285" />
+    <UnitTestResult executionId="5cf81332-cf95-49d5-8fef-9423e0ea7a3b" testId="c7add0e1-425f-31d0-ffe1-5d73899f3492" testName="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Throw_When_IdNotFound" computerName="NGUYENVIETTU" duration="00:00:00.7585307" startTime="2026-01-20T15:26:11.1668839+07:00" endTime="2026-01-20T15:26:11.9018979+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cf81332-cf95-49d5-8fef-9423e0ea7a3b" />
+    <UnitTestResult executionId="4047e3fe-48b4-41e5-b0c0-9bf75851741f" testId="923be8da-e51f-372a-beec-cbf615db9a3f" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsBadRequest_WhenModelStateIsInvalid" computerName="NGUYENVIETTU" duration="00:00:00.0128038" startTime="2026-01-20T15:26:11.3005066+07:00" endTime="2026-01-20T15:26:11.3015223+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4047e3fe-48b4-41e5-b0c0-9bf75851741f" />
+    <UnitTestResult executionId="3bc891ca-11c4-4a67-9fd4-7a5928869201" testId="15afc111-abc3-9ff1-2b21-bdfecebc7fa5" testName="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Update_Only_NonNull_Fields" computerName="NGUYENVIETTU" duration="00:00:00.0238869" startTime="2026-01-20T15:26:12.1189864+07:00" endTime="2026-01-20T15:26:12.1428731+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3bc891ca-11c4-4a67-9fd4-7a5928869201" />
+    <UnitTestResult executionId="02f40098-f0e0-4690-85bb-71e8f05e2fd9" testId="7f3d498b-b2ba-db4e-8eec-f9006e212af9" testName="WBS_backend.Tests.Services.ProjectServiceTest.DeleteProjectByIdAsync_Should_Return_False_When_NotFound_Or_AlreadyDeleted" computerName="NGUYENVIETTU" duration="00:00:00.0032153" startTime="2026-01-20T15:26:12.1502685+07:00" endTime="2026-01-20T15:26:12.1531442+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02f40098-f0e0-4690-85bb-71e8f05e2fd9" />
+    <UnitTestResult executionId="a2c66d9d-4947-4496-8ae2-729b28cba461" testId="2f327d52-c6d6-4dea-4c6a-dea0d6cc5bde" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsNotFound_WhenKeyNotFoundExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0020407" startTime="2026-01-20T15:26:11.3122036+07:00" endTime="2026-01-20T15:26:11.3141622+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2c66d9d-4947-4496-8ae2-729b28cba461" />
+    <UnitTestResult executionId="37994ded-ed30-4095-b094-474078483661" testId="050b9caf-5d6f-d3a1-a85e-08127d6a1d78" testName="AddMemberForProjectId → Khi project không tồn tại → Ném KeyNotFoundException" computerName="NGUYENVIETTU" duration="00:00:00.8226229" startTime="2026-01-20T15:26:11.1666026+07:00" endTime="2026-01-20T15:26:11.9628016+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37994ded-ed30-4095-b094-474078483661" />
+    <UnitTestResult executionId="7d07554f-7073-473e-bebd-00bf54c6edd9" testId="617c9696-7834-b76b-35da-627ffe4cd79e" testName="WBS_backend.Tests.Services.AuthServiceTests.VerificationEmailContent_Should_Contain_Email_And_Code" computerName="NGUYENVIETTU" duration="00:00:00.0011623" startTime="2026-01-20T15:26:13.2292449+07:00" endTime="2026-01-20T15:26:13.2293140+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d07554f-7073-473e-bebd-00bf54c6edd9" />
+    <UnitTestResult executionId="9eaa0956-5f2a-4db4-9b11-c751131411fe" testId="da4854bc-2011-fc0b-1d25-7e52f74bea34" testName="WBS_backend.Tests.Services.AuthServiceTests.LoginAsync_Should_Return_Success_When_Credentials_Valid" computerName="NGUYENVIETTU" duration="00:00:00.3475210" startTime="2026-01-20T15:26:12.6350698+07:00" endTime="2026-01-20T15:26:12.9824709+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9eaa0956-5f2a-4db4-9b11-c751131411fe" />
+    <UnitTestResult executionId="f86220fe-e0a8-4206-90f3-7a417835d2c3" testId="64e77446-16cc-2728-77d7-51c50571e82f" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsInternalServerError_WhenExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0075181" startTime="2026-01-20T15:26:11.2480563+07:00" endTime="2026-01-20T15:26:11.2609269+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f86220fe-e0a8-4206-90f3-7a417835d2c3" />
+    <UnitTestResult executionId="f1646554-32b0-441e-a339-ee2578c68f7c" testId="7f78513f-e2eb-7f9b-3983-115bec6cf650" testName="WBS_backend.Tests.Services.AuthServiceTests.RegisterAsync_Should_Throw_When_Email_Or_Login_Already_Exists" computerName="NGUYENVIETTU" duration="00:00:00.8338861" startTime="2026-01-20T15:26:11.1667006+07:00" endTime="2026-01-20T15:26:11.9772824+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1646554-32b0-441e-a339-ee2578c68f7c" />
+    <UnitTestResult executionId="d62b62fd-e172-459a-9315-cf46d27a5320" testId="0717ecfa-7880-d345-42a3-4a4f0732ca6c" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsUnauthorized_WhenTokenIsNull" computerName="NGUYENVIETTU" duration="00:00:00.0057140" startTime="2026-01-20T15:26:11.2614964+07:00" endTime="2026-01-20T15:26:11.2644486+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d62b62fd-e172-459a-9315-cf46d27a5320" />
+    <UnitTestResult executionId="1c3db4dd-5fd2-41ef-9a82-273d15d0bcd6" testId="e5ad80c3-ac3f-b1b0-4527-2b50408a16aa" testName="WBS_backend.Tests.Services.AuthServiceTests.VerifyEmailAsync_Should_Activate_User_When_Code_Matches" computerName="NGUYENVIETTU" duration="00:00:00.2987424" startTime="2026-01-20T15:26:12.3363123+07:00" endTime="2026-01-20T15:26:12.6347379+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c3db4dd-5fd2-41ef-9a82-273d15d0bcd6" />
+    <UnitTestResult executionId="fd334e2a-0f0e-4367-b646-f6aa741fb665" testId="03069445-e342-1d6e-9fc0-cb303d1781f4" testName="AddMemberForProjectId → Khi project và member tồn tại, chưa tham gia → Tạo mới thành công và trả về thông tin đúng" computerName="NGUYENVIETTU" duration="00:00:00.1090592" startTime="2026-01-20T15:26:11.9632047+07:00" endTime="2026-01-20T15:26:12.0710259+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd334e2a-0f0e-4367-b646-f6aa741fb665" />
+    <UnitTestResult executionId="fa5d0a46-0895-4a11-8585-2d6261cd2c9a" testId="332542c9-19e1-8cba-120e-73f8e4372ba9" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjects_ReturnsEmptyList_WhenNoProjectsExist" computerName="NGUYENVIETTU" duration="00:00:00.0015135" startTime="2026-01-20T15:26:11.3017504+07:00" endTime="2026-01-20T15:26:11.3032687+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa5d0a46-0895-4a11-8585-2d6261cd2c9a" />
+    <UnitTestResult executionId="7f08b676-0d8d-4f93-b7e0-fff498b92948" testId="69d5b0a4-4a19-4e39-38a4-c4ff132c4550" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsOkResult_WhenRegistrationSuccessful" computerName="NGUYENVIETTU" duration="00:00:00.0027051" startTime="2026-01-20T15:26:11.2740281+07:00" endTime="2026-01-20T15:26:11.2766320+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f08b676-0d8d-4f93-b7e0-fff498b92948" />
+    <UnitTestResult executionId="155c27c8-a55f-4b17-9bc2-eb7fc00c6dcb" testId="6de14121-c0e5-5a93-9105-a4761fca4804" testName="WBS_backend.Tests.Services.ProjectServiceTest.CreateProject_Should_Create_New_Project" computerName="NGUYENVIETTU" duration="00:00:00.0126316" startTime="2026-01-20T15:26:12.1534439+07:00" endTime="2026-01-20T15:26:12.1659870+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="155c27c8-a55f-4b17-9bc2-eb7fc00c6dcb" />
+    <UnitTestResult executionId="7cc30b65-cf61-4f23-a410-91acbd40ed3e" testId="3d69fe15-a8a6-5a80-235b-a6f23efc8510" testName="WBS_backend.Tests.Services.ProjectServiceTest.GetAllProjectAsync_Should_Return_Projects_Ordered_By_Id_Desc" computerName="NGUYENVIETTU" duration="00:00:00.0747402" startTime="2026-01-20T15:26:12.0395119+07:00" endTime="2026-01-20T15:26:12.1128398+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7cc30b65-cf61-4f23-a410-91acbd40ed3e" />
+    <UnitTestResult executionId="2447e99c-0eec-442a-abe9-f4eda2d28d01" testId="36b5684a-defd-9186-4f1d-4faf772c4603" testName="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.CreateProject_Should_ReturnOk_And_PersistToDatabase" computerName="NGUYENVIETTU" duration="00:00:00.0669537" startTime="2026-01-20T15:26:12.4293748+07:00" endTime="2026-01-20T15:26:12.4964575+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2447e99c-0eec-442a-abe9-f4eda2d28d01" />
+    <UnitTestResult executionId="756291f1-c411-49f3-95ad-32aab6bad712" testId="0ac7bcd3-b53c-ab89-f25e-aac9f2918e7e" testName="WBS_backend.Tests.Controllers.MemberControllerTests.GetMember_returnOk_WithListOfMember" computerName="NGUYENVIETTU" duration="00:00:00.0349591" startTime="2026-01-20T15:26:11.2605706+07:00" endTime="2026-01-20T15:26:11.2833594+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="756291f1-c411-49f3-95ad-32aab6bad712" />
+    <UnitTestResult executionId="e469c74f-ca3d-43b8-84b0-caf1d424ef93" testId="0b9091d3-80f0-8fed-3148-b74c223f4f28" testName="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsOkResult_WithToken_WhenCredentialsAreValid" computerName="NGUYENVIETTU" duration="00:00:00.0029594" startTime="2026-01-20T15:26:11.2707913+07:00" endTime="2026-01-20T15:26:11.2738552+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e469c74f-ca3d-43b8-84b0-caf1d424ef93" />
+    <UnitTestResult executionId="7814b95d-ae78-484b-a38a-ab6a7a990735" testId="98ebfaae-a476-6f66-2e3d-d9e936e4dfbc" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsBadRequest_WhenProjectNotFoundOrAlreadyDeleted" computerName="NGUYENVIETTU" duration="00:00:00.0028276" startTime="2026-01-20T15:26:11.2608673+07:00" endTime="2026-01-20T15:26:11.2611599+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7814b95d-ae78-484b-a38a-ab6a7a990735" />
+    <UnitTestResult executionId="f77074f5-6486-469c-baa9-e924e1e03da7" testId="5bc8621c-66cb-4fb6-f676-692cee7a6265" testName="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_HandlesEmptyEmail" computerName="NGUYENVIETTU" duration="00:00:00.0027813" startTime="2026-01-20T15:26:11.2610867+07:00" endTime="2026-01-20T15:26:11.2613591+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f77074f5-6486-469c-baa9-e924e1e03da7" />
+    <UnitTestResult executionId="536266d9-e0b8-4362-b674-62ccf516526b" testId="a54e37ea-0cd8-2a07-99c6-67ef12416cb9" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsInternalServerError_WhenExceptionThrown" computerName="NGUYENVIETTU" duration="00:00:00.0532851" startTime="2026-01-20T15:26:11.2034095+07:00" endTime="2026-01-20T15:26:11.2480945+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="536266d9-e0b8-4362-b674-62ccf516526b" />
+    <UnitTestResult executionId="093f063b-42a7-4147-a7cd-a274788fc873" testId="d47d5813-faaf-66c2-60e8-2943ab323ed4" testName="WBS_backend.Tests.Integration.ProjectMemberIntegrationTests.PostMemberInProject_Should_returnOk" computerName="NGUYENVIETTU" duration="00:00:01.2205311" startTime="2026-01-20T15:26:11.1667558+07:00" endTime="2026-01-20T15:26:12.3599397+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="093f063b-42a7-4147-a7cd-a274788fc873" />
+    <UnitTestResult executionId="036f3487-0aa7-480e-9c42-fe7b88d125b0" testId="569348d8-bc23-1ca5-9108-65f03524d809" testName="WBS_backend.Tests.Services.ProjectServiceTest.GetProjectByIdAsync_Should_Return_Dto_When_Project_Exists_And_NotDeleted" computerName="NGUYENVIETTU" duration="00:00:00.0056174" startTime="2026-01-20T15:26:12.1131223+07:00" endTime="2026-01-20T15:26:12.1186553+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="036f3487-0aa7-480e-9c42-fe7b88d125b0" />
+    <UnitTestResult executionId="ec2b7730-19b3-4d49-ad97-5dcff02aa823" testId="a4969b25-4c42-d0b4-e455-93984b1326bc" testName="WBS_backend.Tests.Services.JwtServiceTests.ValidateToken_Should_Return_MemberId_For_Valid_Token" computerName="NGUYENVIETTU" duration="00:00:00.0922367" startTime="2026-01-20T15:26:11.2005172+07:00" endTime="2026-01-20T15:26:11.2736006+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec2b7730-19b3-4d49-ad97-5dcff02aa823" />
+    <UnitTestResult executionId="1857bf8b-3010-4c74-a6fe-67719e6182d6" testId="223b46b3-5c28-1e42-0165-6d89a4bbb0e0" testName="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests.GetAllProjectStatus_Should_ReturnOk" computerName="NGUYENVIETTU" duration="00:00:00.0680766" startTime="2026-01-20T15:26:12.2843542+07:00" endTime="2026-01-20T15:26:12.3528629+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1857bf8b-3010-4c74-a6fe-67719e6182d6" />
+    <UnitTestResult executionId="85f4decc-b010-4845-b8c9-49132dcde3e6" testId="4f0cf541-3b74-28f9-30d1-960631829c87" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsOkResult_WithCreatedProject" computerName="NGUYENVIETTU" duration="00:00:00.0188868" startTime="2026-01-20T15:26:11.2677214+07:00" endTime="2026-01-20T15:26:11.2834598+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="85f4decc-b010-4845-b8c9-49132dcde3e6" />
+    <UnitTestResult executionId="23c09e45-ffcd-4ffc-9e13-a23b1e8cb0c0" testId="17fea8e0-bfce-be59-cd65-e954854468fd" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsOkResult_WhenUpdateSuccessful" computerName="NGUYENVIETTU" duration="00:00:00.0022507" startTime="2026-01-20T15:26:11.3062574+07:00" endTime="2026-01-20T15:26:11.3088939+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23c09e45-ffcd-4ffc-9e13-a23b1e8cb0c0" />
+    <UnitTestResult executionId="1666df27-be22-4584-80a2-66b9000f2665" testId="b5ae7c7f-bdab-13b9-38b9-c267fea3fded" testName="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjects_ReturnsOkResult_WithListOfProjects" computerName="NGUYENVIETTU" duration="00:00:00.0023879" startTime="2026-01-20T15:26:11.2863871+07:00" endTime="2026-01-20T15:26:11.2887535+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1666df27-be22-4584-80a2-66b9000f2665" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.DeleteProjectByIdAsync_Should_Return_False_When_NotFound_Or_AlreadyDeleted" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="7f3d498b-b2ba-db4e-8eec-f9006e212af9">
+      <Execution id="02f40098-f0e0-4690-85bb-71e8f05e2fd9" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="DeleteProjectByIdAsync_Should_Return_False_When_NotFound_Or_AlreadyDeleted" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Entities.ProjectStatusTests.Properties_Should_Be_Settable" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="e78cc352-945b-6500-c471-c62225247fa7">
+      <Execution id="a640c2a7-ffe9-4d09-9c29-7bedec6c4afd" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Entities.ProjectStatusTests" name="Properties_Should_Be_Settable" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsNotFound_WhenProjectDoesNotExist" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="02707802-7ddf-efa3-16c4-f678d77cc09e">
+      <Execution id="0627accf-354f-4eeb-a9af-54124b6b1ae9" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PatchProjectById_ReturnsNotFound_WhenProjectDoesNotExist" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsNotFound_WhenKeyNotFoundExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="2f327d52-c6d6-4dea-4c6a-dea0d6cc5bde">
+      <Execution id="a2c66d9d-4947-4496-8ae2-729b28cba461" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="DeleteProjectById_ReturnsNotFound_WhenKeyNotFoundExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.VerifyEmailAsync_Should_Activate_User_When_Code_Matches" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="e5ad80c3-ac3f-b1b0-4527-2b50408a16aa">
+      <Execution id="1c3db4dd-5fd2-41ef-9a82-273d15d0bcd6" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="VerifyEmailAsync_Should_Activate_User_When_Code_Matches" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="1e33b907-2bf9-1631-942e-020093d06501">
+      <Execution id="365033ee-a755-4b65-b98e-f4ca3c0d87d3" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="VerifyEmail_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.MemberControllerTests.GetMember_ReturnNotFound_WhenNoMember" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="6cf95320-7367-62b8-ee9d-a05705e51def">
+      <Execution id="f6e0ce44-16dc-472f-b5f1-ac551bae6dd4" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.MemberControllerTests" name="GetMember_ReturnNotFound_WhenNoMember" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.RegisterAsync_Should_Throw_When_Email_Or_Login_Already_Exists" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="7f78513f-e2eb-7f9b-3983-115bec6cf650">
+      <Execution id="f1646554-32b0-441e-a339-ee2578c68f7c" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="RegisterAsync_Should_Throw_When_Email_Or_Login_Already_Exists" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsInternalServerError_WhenExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="64e77446-16cc-2728-77d7-51c50571e82f">
+      <Execution id="f86220fe-e0a8-4206-90f3-7a417835d2c3" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Register_ReturnsInternalServerError_WhenExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsInternalServerError_WhenExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="a54e37ea-0cd8-2a07-99c6-67ef12416cb9">
+      <Execution id="536266d9-e0b8-4362-b674-62ccf516526b" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PostProject_ReturnsInternalServerError_WhenExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsOkResult_WhenUpdateSuccessful" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="17fea8e0-bfce-be59-cd65-e954854468fd">
+      <Execution id="23c09e45-ffcd-4ffc-9e13-a23b1e8cb0c0" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PatchProjectById_ReturnsOkResult_WhenUpdateSuccessful" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Update_Only_NonNull_Fields" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="15afc111-abc3-9ff1-2b21-bdfecebc7fa5">
+      <Execution id="3bc891ca-11c4-4a67-9fd4-7a5928869201" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="UpdateProject_Should_Update_Only_NonNull_Fields" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsUnauthorized_WhenTokenIsNull" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="0717ecfa-7880-d345-42a3-4a4f0732ca6c">
+      <Execution id="d62b62fd-e172-459a-9315-cf46d27a5320" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Login_ReturnsUnauthorized_WhenTokenIsNull" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests.GetAllProjectStatus_Should_ReturnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="223b46b3-5c28-1e42-0165-6d89a4bbb0e0">
+      <Execution id="1857bf8b-3010-4c74-a6fe-67719e6182d6" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests" name="GetAllProjectStatus_Should_ReturnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsNotFound_WhenProjectDoesNotExist" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="c5e52ba0-c008-85af-4da0-9b618353f915">
+      <Execution id="0499ac32-0fc2-456f-abe2-6d34bd17e22f" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="GetProjectById_ReturnsNotFound_WhenProjectDoesNotExist" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.JwtServiceTests.ValidateToken_Should_Return_MemberId_For_Valid_Token" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="a4969b25-4c42-d0b4-e455-93984b1326bc">
+      <Execution id="ec2b7730-19b3-4d49-ad97-5dcff02aa823" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.JwtServiceTests" name="ValidateToken_Should_Return_MemberId_For_Valid_Token" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.MemberControllerTests.GetMember_returnOk_WithListOfMember" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="0ac7bcd3-b53c-ab89-f25e-aac9f2918e7e">
+      <Execution id="756291f1-c411-49f3-95ad-32aab6bad712" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.MemberControllerTests" name="GetMember_returnOk_WithListOfMember" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.GetAllProjectAsync_Should_Return_Projects_Ordered_By_Id_Desc" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="3d69fe15-a8a6-5a80-235b-a6f23efc8510">
+      <Execution id="7cc30b65-cf61-4f23-a410-91acbd40ed3e" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="GetAllProjectAsync_Should_Return_Projects_Ordered_By_Id_Desc" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsOkResult_WithToken_WhenCredentialsAreValid" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="0b9091d3-80f0-8fed-3148-b74c223f4f28">
+      <Execution id="e469c74f-ca3d-43b8-84b0-caf1d424ef93" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Login_ReturnsOkResult_WithToken_WhenCredentialsAreValid" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsInternalServerError_WhenExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="1f0641db-6a9a-4bc4-80cd-888e3061f3a5">
+      <Execution id="8e3f9a4f-79bb-4007-8519-f748e84c1285" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="VerifyEmail_ReturnsInternalServerError_WhenExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.LoginAsync_Should_Return_Success_When_Credentials_Valid" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="da4854bc-2011-fc0b-1d25-7e52f74bea34">
+      <Execution id="9eaa0956-5f2a-4db4-9b11-c751131411fe" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="LoginAsync_Should_Return_Success_When_Credentials_Valid" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="0d1e3d10-8006-1dbb-7d22-f596c1c3bbbd">
+      <Execution id="64e2bf62-1116-4890-8db2-63981816566b" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Register_ReturnsBadRequest_WhenInvalidOperationExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsOkResult_WhenProjectExists" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="06410898-c15a-2bf7-c4d3-e84b01780a72">
+      <Execution id="82d21ed3-9039-4267-9c83-852729809264" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="GetProjectById_ReturnsOkResult_WhenProjectExists" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.VerificationEmailContent_Should_Contain_Email_And_Code" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="617c9696-7834-b76b-35da-627ffe4cd79e">
+      <Execution id="7d07554f-7073-473e-bebd-00bf54c6edd9" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="VerificationEmailContent_Should_Contain_Email_And_Code" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Throw_When_IdNotFound" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="c7add0e1-425f-31d0-ffe1-5d73899f3492">
+      <Execution id="5cf81332-cf95-49d5-8fef-9423e0ea7a3b" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="UpdateProject_Should_Throw_When_IdNotFound" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_ReturnsOkResult_WhenVerificationSuccessful" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="2c06b6b1-90f4-e3f1-2747-8506f460cd17">
+      <Execution id="dc50f3e2-c54c-48cb-a764-4a3884c4bced" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="VerifyEmail_ReturnsOkResult_WhenVerificationSuccessful" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsBadRequest_WhenModelStateIsInvalid" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="923be8da-e51f-372a-beec-cbf615db9a3f">
+      <Execution id="4047e3fe-48b4-41e5-b0c0-9bf75851741f" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PostProject_ReturnsBadRequest_WhenModelStateIsInvalid" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectMemberControllerTests.aaa" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="265af35e-a94c-15dd-d2a0-52d66ad84a38">
+      <Execution id="fabc1d2a-d16e-4c2b-b2ce-ef0693bfb26a" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectMemberControllerTests" name="aaa" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.CreateProject_Should_Create_New_Project" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="6de14121-c0e5-5a93-9105-a4761fca4804">
+      <Execution id="155c27c8-a55f-4b17-9bc2-eb7fc00c6dcb" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="CreateProject_Should_Create_New_Project" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_HandlesEmptyEmail" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="5bc8621c-66cb-4fb6-f676-692cee7a6265">
+      <Execution id="f77074f5-6486-469c-baa9-e924e1e03da7" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="VerifyEmail_HandlesEmptyEmail" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Register_ReturnsOkResult_WhenRegistrationSuccessful" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="69d5b0a4-4a19-4e39-38a4-c4ff132c4550">
+      <Execution id="7f08b676-0d8d-4f93-b7e0-fff498b92948" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Register_ReturnsOkResult_WhenRegistrationSuccessful" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Entities.ProjectStatusTests.Constructor_Should_Set_Default_Values" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="dca5949d-3985-55e3-3683-de2aa6abff77">
+      <Execution id="da125bc3-54b0-4c54-8e56-012247646850" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Entities.ProjectStatusTests" name="Constructor_Should_Set_Default_Values" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.GetProjectById_Shold_ReturnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="99f6c09a-a731-73ef-b936-fc8c92615356">
+      <Execution id="78658745-2645-4fd3-9e63-4f6ca1cda5bf" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests" name="GetProjectById_Shold_ReturnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.RegisterAsync_Should_Create_User_When_Email_And_Login_Not_Exist" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="0f6c3f5c-87d5-ff27-b7e3-b47c2a4422e1">
+      <Execution id="fda91cde-6d0c-41d0-982b-262741f52083" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="RegisterAsync_Should_Create_User_When_Email_And_Login_Not_Exist" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PatchProjectById_ReturnsInternalServerError_WhenExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="a97903cd-300f-f821-701a-b12ec49bf1f3">
+      <Execution id="06cd816a-206e-42d4-8d5d-bd11b7420a69" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PatchProjectById_ReturnsInternalServerError_WhenExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.UpdateProject_Should_returnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="2088a744-adcf-1c80-7e09-a4e1596eecac">
+      <Execution id="38767ec8-4c2c-4e74-86f8-dfd3073650ac" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests" name="UpdateProject_Should_returnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.VerifyEmailAsync_Should_Throw_When_Code_Invalid" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="ea56f888-62fb-0310-66b8-849b8b69d34e">
+      <Execution id="36ea51c6-9e00-4777-8a36-e6ba8da08883" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="VerifyEmailAsync_Should_Throw_When_Code_Invalid" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.VerifyEmail_HandlesEmptyCode" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="65425977-274f-bf8a-4f5f-f4d45f1bee7b">
+      <Execution id="642d1ea6-2d4a-4302-ae52-1934fd0c0663" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="VerifyEmail_HandlesEmptyCode" />
+    </UnitTest>
+    <UnitTest name="AddMemberForProjectId → Khi project không tồn tại → Ném KeyNotFoundException" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="050b9caf-5d6f-d3a1-a85e-08127d6a1d78">
+      <Execution id="37994ded-ed30-4095-b094-474078483661" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectMemberServiceTest" name="AddMember_WhenProjectNotExists_Should_ThrowKeyNotFoundException" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjects_ReturnsEmptyList_WhenNoProjectsExist" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="332542c9-19e1-8cba-120e-73f8e4372ba9">
+      <Execution id="fa5d0a46-0895-4a11-8585-2d6261cd2c9a" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="GetProjects_ReturnsEmptyList_WhenNoProjectsExist" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests.GetProjectStatusById_Should_ReturnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="02c36578-0d93-5a26-9532-42ea093a5d20">
+      <Execution id="35fcaf11-2fc8-424c-a47a-c53249daaac2" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectStatusIntegrationTests" name="GetProjectStatusById_Should_ReturnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.AuthServiceTests.LoginAsync_Should_Return_Failed_When_User_NotFound_Or_WrongPassword" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="020757d2-f532-2458-3de1-636884995586">
+      <Execution id="23815f11-0877-439f-acc2-ac30d631db39" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.AuthServiceTests" name="LoginAsync_Should_Return_Failed_When_User_NotFound_Or_WrongPassword" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsOkResult_WhenDeleteSuccessful" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="39cbc7a9-cdbc-f8dc-3175-ee8b0c41c6a0">
+      <Execution id="0d576f79-6f5f-4369-843a-e68520c2450f" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="DeleteProjectById_ReturnsOkResult_WhenDeleteSuccessful" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.GetProjectByIdAsync_Should_Return_Dto_When_Project_Exists_And_NotDeleted" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="569348d8-bc23-1ca5-9108-65f03524d809">
+      <Execution id="036f3487-0aa7-480e-9c42-fe7b88d125b0" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="GetProjectByIdAsync_Should_Return_Dto_When_Project_Exists_And_NotDeleted" />
+    </UnitTest>
+    <UnitTest name="AddMemberForProjectId → Khi project và member tồn tại, chưa tham gia → Tạo mới thành công và trả về thông tin đúng" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="03069445-e342-1d6e-9fc0-cb303d1781f4">
+      <Execution id="fd334e2a-0f0e-4367-b646-f6aa741fb665" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectMemberServiceTest" name="AddMember_Should_CreateNewParticipation_And_ReturnCorrectData" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsOkResult_WithCreatedProject" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="4f0cf541-3b74-28f9-30d1-960631829c87">
+      <Execution id="85f4decc-b010-4845-b8c9-49132dcde3e6" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PostProject_ReturnsOkResult_WithCreatedProject" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.UpdateProject_Should_Throw_When_Project_Is_Deleted" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="405ac065-a5a4-f937-8d91-7d249fda68f1">
+      <Execution id="e9d12282-5f49-40fb-8772-a670943b501f" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="UpdateProject_Should_Throw_When_Project_Is_Deleted" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectMemberIntegrationTests.PostMemberInProject_Should_returnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="d47d5813-faaf-66c2-60e8-2943ab323ed4">
+      <Execution id="093f063b-42a7-4147-a7cd-a274788fc873" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectMemberIntegrationTests" name="PostMemberInProject_Should_returnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.GetProjectByIdAsync_Should_Return_Null_When_Project_Deleted" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="1a743729-be94-247d-d50b-0305ef494e8b">
+      <Execution id="065a4a86-6edd-47a8-94a5-59ec84cf976b" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="GetProjectByIdAsync_Should_Return_Null_When_Project_Deleted" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.CreateProject_Should_ReturnOk_And_PersistToDatabase" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="36b5684a-defd-9186-4f1d-4faf772c4603">
+      <Execution id="2447e99c-0eec-442a-abe9-f4eda2d28d01" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests" name="CreateProject_Should_ReturnOk_And_PersistToDatabase" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.DeleteProjectById_ReturnsBadRequest_WhenProjectNotFoundOrAlreadyDeleted" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="98ebfaae-a476-6f66-2e3d-d9e936e4dfbc">
+      <Execution id="7814b95d-ae78-484b-a38a-ab6a7a990735" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="DeleteProjectById_ReturnsBadRequest_WhenProjectNotFoundOrAlreadyDeleted" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.PostProject_ReturnsBadRequest_WhenArgumentExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="543c4721-08c9-5124-e091-d37e8d0a3e26">
+      <Execution id="7e6738c4-707b-4c87-bb14-c03117c5e17b" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="PostProject_ReturnsBadRequest_WhenArgumentExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.ProjectServiceTest.DeleteProjectByIdAsync_Should_SoftDelete_And_Return_True" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="ef4fd636-d1bf-de63-0bbf-5d3e6d936589">
+      <Execution id="5af5bb26-ead7-464f-830e-79eb1649ac18" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.ProjectServiceTest" name="DeleteProjectByIdAsync_Should_SoftDelete_And_Return_True" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.AuthControllerTests.Login_ReturnsUnauthorized_WhenCredentialsAreInvalid" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="f61d70fa-4538-ba3a-09d2-837f36dfdddf">
+      <Execution id="c35dfda3-08b7-4f27-83a2-332d91720c9d" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.AuthControllerTests" name="Login_ReturnsUnauthorized_WhenCredentialsAreInvalid" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjectById_ReturnsInternalServerError_WhenExceptionThrown" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="8dcee7d9-4fe4-c42d-8878-111e2277cfe9">
+      <Execution id="f76394b9-502d-4ef7-bd34-c4fc10cec223" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="GetProjectById_ReturnsInternalServerError_WhenExceptionThrown" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Controllers.ProjectControllerTests.GetProjects_ReturnsOkResult_WithListOfProjects" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="b5ae7c7f-bdab-13b9-38b9-c267fea3fded">
+      <Execution id="1666df27-be22-4584-80a2-66b9000f2665" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Controllers.ProjectControllerTests" name="GetProjects_ReturnsOkResult_WithListOfProjects" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests.DeleteProject_Should_ReturnOk" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="03566927-398f-4e92-d513-6cc61d7b3e62">
+      <Execution id="8cb42ddb-2e2f-43af-a31a-99c5c5037c66" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Integration.ProjectCreateIntegrationTests" name="DeleteProject_Should_ReturnOk" />
+    </UnitTest>
+    <UnitTest name="WBS_backend.Tests.Services.JwtServiceTests.ValidateToken_Should_Return_Null_For_Invalid_Or_Empty_Token" storage="c:\workspace\demo_intern_3\wbs_test\wbs_backend.tests\bin\debug\net10.0\wbs_backend.tests.dll" id="771b2354-ffff-506d-6db1-be3c64d0ad6d">
+      <Execution id="929eb803-c545-476a-913b-693c06a37ead" />
+      <TestMethod codeBase="C:\workspace\Demo_intern_3\wbs_test\WBS_backend.Tests\bin\Debug\net10.0\WBS_backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WBS_backend.Tests.Services.JwtServiceTests" name="ValidateToken_Should_Return_Null_For_Invalid_Or_Empty_Token" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="a97903cd-300f-f821-701a-b12ec49bf1f3" executionId="06cd816a-206e-42d4-8d5d-bd11b7420a69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02c36578-0d93-5a26-9532-42ea093a5d20" executionId="35fcaf11-2fc8-424c-a47a-c53249daaac2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2088a744-adcf-1c80-7e09-a4e1596eecac" executionId="38767ec8-4c2c-4e74-86f8-dfd3073650ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c06b6b1-90f4-e3f1-2747-8506f460cd17" executionId="dc50f3e2-c54c-48cb-a764-4a3884c4bced" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="020757d2-f532-2458-3de1-636884995586" executionId="23815f11-0877-439f-acc2-ac30d631db39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8dcee7d9-4fe4-c42d-8878-111e2277cfe9" executionId="f76394b9-502d-4ef7-bd34-c4fc10cec223" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f61d70fa-4538-ba3a-09d2-837f36dfdddf" executionId="c35dfda3-08b7-4f27-83a2-332d91720c9d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e78cc352-945b-6500-c471-c62225247fa7" executionId="a640c2a7-ffe9-4d09-9c29-7bedec6c4afd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0f6c3f5c-87d5-ff27-b7e3-b47c2a4422e1" executionId="fda91cde-6d0c-41d0-982b-262741f52083" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="405ac065-a5a4-f937-8d91-7d249fda68f1" executionId="e9d12282-5f49-40fb-8772-a670943b501f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea56f888-62fb-0310-66b8-849b8b69d34e" executionId="36ea51c6-9e00-4777-8a36-e6ba8da08883" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1e33b907-2bf9-1631-942e-020093d06501" executionId="365033ee-a755-4b65-b98e-f4ca3c0d87d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="543c4721-08c9-5124-e091-d37e8d0a3e26" executionId="7e6738c4-707b-4c87-bb14-c03117c5e17b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5e52ba0-c008-85af-4da0-9b618353f915" executionId="0499ac32-0fc2-456f-abe2-6d34bd17e22f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d1e3d10-8006-1dbb-7d22-f596c1c3bbbd" executionId="64e2bf62-1116-4890-8db2-63981816566b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6cf95320-7367-62b8-ee9d-a05705e51def" executionId="f6e0ce44-16dc-472f-b5f1-ac551bae6dd4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99f6c09a-a731-73ef-b936-fc8c92615356" executionId="78658745-2645-4fd3-9e63-4f6ca1cda5bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="39cbc7a9-cdbc-f8dc-3175-ee8b0c41c6a0" executionId="0d576f79-6f5f-4369-843a-e68520c2450f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a743729-be94-247d-d50b-0305ef494e8b" executionId="065a4a86-6edd-47a8-94a5-59ec84cf976b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="265af35e-a94c-15dd-d2a0-52d66ad84a38" executionId="fabc1d2a-d16e-4c2b-b2ce-ef0693bfb26a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02707802-7ddf-efa3-16c4-f678d77cc09e" executionId="0627accf-354f-4eeb-a9af-54124b6b1ae9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="06410898-c15a-2bf7-c4d3-e84b01780a72" executionId="82d21ed3-9039-4267-9c83-852729809264" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65425977-274f-bf8a-4f5f-f4d45f1bee7b" executionId="642d1ea6-2d4a-4302-ae52-1934fd0c0663" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dca5949d-3985-55e3-3683-de2aa6abff77" executionId="da125bc3-54b0-4c54-8e56-012247646850" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef4fd636-d1bf-de63-0bbf-5d3e6d936589" executionId="5af5bb26-ead7-464f-830e-79eb1649ac18" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03566927-398f-4e92-d513-6cc61d7b3e62" executionId="8cb42ddb-2e2f-43af-a31a-99c5c5037c66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="771b2354-ffff-506d-6db1-be3c64d0ad6d" executionId="929eb803-c545-476a-913b-693c06a37ead" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0641db-6a9a-4bc4-80cd-888e3061f3a5" executionId="8e3f9a4f-79bb-4007-8519-f748e84c1285" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c7add0e1-425f-31d0-ffe1-5d73899f3492" executionId="5cf81332-cf95-49d5-8fef-9423e0ea7a3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="923be8da-e51f-372a-beec-cbf615db9a3f" executionId="4047e3fe-48b4-41e5-b0c0-9bf75851741f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="15afc111-abc3-9ff1-2b21-bdfecebc7fa5" executionId="3bc891ca-11c4-4a67-9fd4-7a5928869201" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7f3d498b-b2ba-db4e-8eec-f9006e212af9" executionId="02f40098-f0e0-4690-85bb-71e8f05e2fd9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2f327d52-c6d6-4dea-4c6a-dea0d6cc5bde" executionId="a2c66d9d-4947-4496-8ae2-729b28cba461" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="050b9caf-5d6f-d3a1-a85e-08127d6a1d78" executionId="37994ded-ed30-4095-b094-474078483661" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="617c9696-7834-b76b-35da-627ffe4cd79e" executionId="7d07554f-7073-473e-bebd-00bf54c6edd9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da4854bc-2011-fc0b-1d25-7e52f74bea34" executionId="9eaa0956-5f2a-4db4-9b11-c751131411fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="64e77446-16cc-2728-77d7-51c50571e82f" executionId="f86220fe-e0a8-4206-90f3-7a417835d2c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7f78513f-e2eb-7f9b-3983-115bec6cf650" executionId="f1646554-32b0-441e-a339-ee2578c68f7c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0717ecfa-7880-d345-42a3-4a4f0732ca6c" executionId="d62b62fd-e172-459a-9315-cf46d27a5320" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e5ad80c3-ac3f-b1b0-4527-2b50408a16aa" executionId="1c3db4dd-5fd2-41ef-9a82-273d15d0bcd6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03069445-e342-1d6e-9fc0-cb303d1781f4" executionId="fd334e2a-0f0e-4367-b646-f6aa741fb665" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="332542c9-19e1-8cba-120e-73f8e4372ba9" executionId="fa5d0a46-0895-4a11-8585-2d6261cd2c9a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="69d5b0a4-4a19-4e39-38a4-c4ff132c4550" executionId="7f08b676-0d8d-4f93-b7e0-fff498b92948" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6de14121-c0e5-5a93-9105-a4761fca4804" executionId="155c27c8-a55f-4b17-9bc2-eb7fc00c6dcb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3d69fe15-a8a6-5a80-235b-a6f23efc8510" executionId="7cc30b65-cf61-4f23-a410-91acbd40ed3e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="36b5684a-defd-9186-4f1d-4faf772c4603" executionId="2447e99c-0eec-442a-abe9-f4eda2d28d01" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ac7bcd3-b53c-ab89-f25e-aac9f2918e7e" executionId="756291f1-c411-49f3-95ad-32aab6bad712" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0b9091d3-80f0-8fed-3148-b74c223f4f28" executionId="e469c74f-ca3d-43b8-84b0-caf1d424ef93" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98ebfaae-a476-6f66-2e3d-d9e936e4dfbc" executionId="7814b95d-ae78-484b-a38a-ab6a7a990735" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5bc8621c-66cb-4fb6-f676-692cee7a6265" executionId="f77074f5-6486-469c-baa9-e924e1e03da7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a54e37ea-0cd8-2a07-99c6-67ef12416cb9" executionId="536266d9-e0b8-4362-b674-62ccf516526b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d47d5813-faaf-66c2-60e8-2943ab323ed4" executionId="093f063b-42a7-4147-a7cd-a274788fc873" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="569348d8-bc23-1ca5-9108-65f03524d809" executionId="036f3487-0aa7-480e-9c42-fe7b88d125b0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a4969b25-4c42-d0b4-e455-93984b1326bc" executionId="ec2b7730-19b3-4d49-ad97-5dcff02aa823" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="223b46b3-5c28-1e42-0165-6d89a4bbb0e0" executionId="1857bf8b-3010-4c74-a6fe-67719e6182d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f0cf541-3b74-28f9-30d1-960631829c87" executionId="85f4decc-b010-4845-b8c9-49132dcde3e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="17fea8e0-bfce-be59-cd65-e954854468fd" executionId="23c09e45-ffcd-4ffc-9e13-a23b1e8cb0c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5ae7c7f-bdab-13b9-38b9-c267fea3fded" executionId="1666df27-be22-4584-80a2-66b9000f2665" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="58" executed="58" passed="58" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.1)&#xD;
+[xUnit.net 00:00:00.08]   Discovering: WBS_backend.Tests&#xD;
+[xUnit.net 00:00:00.12]   Discovered:  WBS_backend.Tests&#xD;
+[xUnit.net 00:00:00.15]   Starting:    WBS_backend.Tests&#xD;
+     Warning:&#xD;
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and&#xD;
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for&#xD;
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.&#xD;
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.&#xD;
+     A paid commercial license supports the development and continued increasing support of&#xD;
+     Fluent Assertions users under both commercial and community licenses. Help us&#xD;
+     keep Fluent Assertions at the forefront of unit testing.&#xD;
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+Environment file not found: .env.local, using system environment variables&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\workspace\Demo_intern_3\wbs_test\WBS_backend&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+X�c th?c email th?t b?i: No connection could be made because the target machine actively refused it.&#xD;
+[xUnit.net 00:00:06.66]   Finished:    WBS_backend.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
